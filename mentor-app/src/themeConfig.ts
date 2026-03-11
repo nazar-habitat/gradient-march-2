@@ -28,7 +28,7 @@ const themeConfig: ThemeConfig = {
     colorBgBase: '#000000', // Figma: Neutral/Black
 
     fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-    fontSize: 16,
+    fontSize: 14,
     borderRadius: 8,
 
     // ─── Background / text / border (Figma Neutral scale) ───
