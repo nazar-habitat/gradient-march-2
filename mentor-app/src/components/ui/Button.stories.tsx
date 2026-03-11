@@ -216,3 +216,75 @@ export const Icons: Story = {
     </div>
   ),
 };
+
+// ---------------------------------------------------------------------------
+// Tailwind utilities from index.css (@utility btn, btn-primary, icon-btn, etc.)
+// Use these classes when you need raw markup (e.g. non-Antd) aligned with the design system.
+// ---------------------------------------------------------------------------
+
+export const TailwindUtilities: Story = {
+  name: 'Tailwind utilities (index.css)',
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Custom utilities from `src/index.css` (@utility). Use with native elements when not using the design-system Button/IconButton.',
+      },
+    },
+  },
+  render: () => (
+    <div className="flex flex-col gap-6 p-4">
+      <section className="flex flex-col gap-2">
+        <span className="text-xs text-neutral-400">Buttons (btn + variant + size)</span>
+        <div className="flex flex-wrap gap-2 items-center">
+          <button type="button" className="btn btn-primary">
+            Primary
+          </button>
+          <button type="button" className="btn btn-secondary">
+            Secondary
+          </button>
+          <button type="button" className="btn btn-text">
+            Text
+          </button>
+          <button type="button" className="btn btn-primary btn-small">
+            Primary small
+          </button>
+          <button type="button" className="btn btn-primary btn-medium" disabled>
+            Disabled
+          </button>
+        </div>
+      </section>
+      <section className="flex flex-col gap-2">
+        <span className="text-xs text-neutral-400">Icon buttons (icon-btn + variant + size)</span>
+        <div className="flex flex-wrap gap-2 items-center">
+          <button type="button" className="icon-btn icon-btn-primary" aria-label="Primary">
+            <SearchOutlined />
+          </button>
+          <button type="button" className="icon-btn icon-btn-secondary" aria-label="Secondary">
+            <SearchOutlined />
+          </button>
+          <button type="button" className="icon-btn icon-btn-text" aria-label="Text">
+            <SearchOutlined />
+          </button>
+          <button type="button" className="icon-btn icon-btn-primary icon-btn-small" aria-label="Small">
+            <SearchOutlined />
+          </button>
+        </div>
+      </section>
+      <section className="flex flex-col gap-2">
+        <span className="text-xs text-neutral-400">Toggle group (toggle-btn-group-* + toggle-btn + size)</span>
+        <div className="toggle-btn-group-md">
+          <button type="button" className="toggle-btn toggle-btn-medium">
+            Option A
+          </button>
+          <button type="button" className="toggle-btn toggle-btn-medium">
+            Option B
+          </button>
+          <button type="button" className="toggle-btn toggle-btn-medium">
+            Option C
+          </button>
+        </div>
+      </section>
+    </div>
+  ),
+};
