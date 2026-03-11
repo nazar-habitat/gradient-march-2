@@ -17,20 +17,36 @@ const themeConfig: ThemeConfig = {
   algorithm: theme.darkAlgorithm,
 
   token: {
+    // ─── Seed tokens (Figma Gradient Design System — see docs/FIGMA-DEV-THEME-SYNC.md) ───
+    colorPrimary: '#5452f5', // Figma: Purple/500
+    colorSuccess: '#26ea5d', // Figma: Green/500
+    colorWarning: '#ffae18', // Figma: Orange/500
+    colorError: '#e53e1c', // Figma: Red/600
+    colorInfo: '#5452f5',
+    colorLink: '#5452f5',
+    colorTextBase: '#ffffff', // Figma: Foreground/fg-primary
+    colorBgBase: '#000000', // Figma: Neutral/Black
 
-    // ─── Seed Tokens (primary inputs — change these to cascade) ───
-    // colorPrimary: "#1668dc",
-    // colorSuccess: "#49aa19",
-    // colorWarning: "#d89614",
-    // colorError: "#dc4446",
-    // colorInfo: "#1668dc",
-    // colorLink: "#1668dc",
-    // colorTextBase: "#fff",
-    // colorBgBase: "#000",
-    // fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,\n'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',\n'Noto Color Emoji'",
+    fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+    fontSize: 16,
+    borderRadius: 8,
+
+    // ─── Background / text / border (Figma Neutral scale) ───
+    colorBgContainer: '#141414', // Figma: Neutral/950
+    colorBgElevated: '#191919', // Figma: Neutral/900
+    colorText: 'rgba(255,255,255,0.9)',
+    colorTextSecondary: '#dedede', // Figma: Neutral/100
+    colorTextTertiary: '#949494', // Figma: Neutral/400
+    colorBorder: '#313131', // Figma: Neutral/800
+    colorBorderSecondary: '#4a4a4a', // Figma: Neutral/700
+
+    // Primary variants (Figma Purple/600, /700)
+    colorPrimaryHover: '#4341f1',
+    colorPrimaryActive: '#3735bb',
+
+    // ─── Rest of seed tokens (uncomment to override) ───
     // fontFamilyCode: "'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
     // fontSize: 14,
-    // borderRadius: 6,
     // sizeUnit: 4,
     // sizeStep: 4,
     // controlHeight: 32,
