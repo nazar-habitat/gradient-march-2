@@ -103,6 +103,7 @@ export const States: Story = {
   name: 'States',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <style>{`.force-focus.ant-btn:not(:disabled) { outline: 2px solid #1677ff; outline-offset: 1px; }`}</style>
       <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
         <span style={{ width: 72, fontSize: 12, opacity: 0.5 }}>disabled</span>
         <Button variant="solid" disabled>Solid</Button>
@@ -118,6 +119,22 @@ export const States: Story = {
         <Button variant="filled" loading>Filled</Button>
         <Button variant="text" loading>Text</Button>
         <Button variant="link" loading>Link</Button>
+      </div>
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+        <span style={{ width: 72, fontSize: 12, opacity: 0.5 }}>default</span>
+        <Button variant="solid">Solid</Button>
+        <Button variant="outlined">Outlined</Button>
+        <Button variant="filled">Filled</Button>
+        <Button variant="text">Text</Button>
+        <Button variant="link">Link</Button>
+      </div>
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+        <span style={{ width: 72, fontSize: 12, opacity: 0.5 }}>focused</span>
+        <Button variant="solid" className="force-focus">Solid</Button>
+        <Button variant="outlined" className="force-focus">Outlined</Button>
+        <Button variant="filled" className="force-focus">Filled</Button>
+        <Button variant="text" className="force-focus">Text</Button>
+        <Button variant="link" className="force-focus">Link</Button>
       </div>
     </div>
   ),
