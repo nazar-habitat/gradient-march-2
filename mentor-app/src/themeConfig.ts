@@ -177,8 +177,8 @@ const themeConfig: ThemeConfig = {
     // colorTextLightSolid: "#fff",
 
     // ─── Typography (Figma Gradient Design System — see docs/FIGMA-DEV-THEME-SYNC.md § Typography) ───
-    fontSizeSM: 14, // Figma: Body/M or small UI (captions, small buttons)
-    fontSizeLG: 18, // Figma: Body/L large
+    fontSizeSM: 12, // Figma: Body/M or small UI (captions, small buttons)
+    fontSizeLG: 16, // Figma: Body/L large
     fontSizeXL: 20,
     fontSizeHeading1: 38,
     fontSizeHeading2: 30,
