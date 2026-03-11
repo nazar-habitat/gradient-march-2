@@ -10,6 +10,28 @@ layer(base);
 @theme {
   --font-sans: Inter, sans-serif;
 
+  /* Typography scale (mirrors themeConfig / Figma — see docs/FIGMA-DEV-THEME-SYNC.md §4) */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-heading-1: 38px;
+  --font-size-heading-2: 30px;
+  --font-size-heading-3: 24px;
+  --font-size-heading-4: 20px;
+  --font-size-heading-5: 16px;
+  --line-height-tight: 1.21;
+  --line-height-snug: 1.27;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.5;
+
+  /* Font weights (mirrors themeConfig.fontWeightStrong & Figma — see docs/FIGMA-DEV-THEME-SYNC.md §4) */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
   --color-transparent: transparent;
   --color-black: #000;
   --color-white: #fff;

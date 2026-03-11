@@ -176,28 +176,25 @@ const themeConfig: ThemeConfig = {
     // colorSplit: "rgba(253,253,253,0.12)",
     // colorTextLightSolid: "#fff",
 
-    // ─── Typography ───
-    // fontSizeSM: 12,
-    // fontSizeLG: 16,
-    // fontSizeXL: 20,
-    // fontSizeHeading1: 38,
-    // fontSizeHeading2: 30,
-    // fontSizeHeading3: 24,
-    // fontSizeHeading4: 20,
-    // fontSizeHeading5: 16,
-    // lineHeight: 1.5714285714285714,
-    // lineHeightLG: 1.5,
-    // lineHeightSM: 1.6666666666666667,
-    // fontHeight: 22,
-    // fontHeightLG: 24,
-    // fontHeightSM: 20,
-    // lineHeightHeading1: 1.2105263157894737,
-    // lineHeightHeading2: 1.2666666666666666,
-    // lineHeightHeading3: 1.3333333333333333,
-    // lineHeightHeading4: 1.4,
-    // lineHeightHeading5: 1.5,
-    // fontSizeIcon: 12,
-    // fontWeightStrong: 600,
+    // ─── Typography (Figma Gradient Design System — see docs/FIGMA-DEV-THEME-SYNC.md § Typography) ───
+    fontSizeSM: 14, // Figma: Body/M or small UI (captions, small buttons)
+    fontSizeLG: 18, // Figma: Body/L large
+    fontSizeXL: 20,
+    fontSizeHeading1: 38,
+    fontSizeHeading2: 30,
+    fontSizeHeading3: 24,
+    fontSizeHeading4: 20,
+    fontSizeHeading5: 16,
+    lineHeight: 1.5, // 24/16 — Figma Body/L line height 24
+    lineHeightLG: 1.5,
+    lineHeightSM: 1.5,
+    lineHeightHeading1: 1.21,
+    lineHeightHeading2: 1.27,
+    lineHeightHeading3: 1.33,
+    lineHeightHeading4: 1.4,
+    lineHeightHeading5: 1.5,
+    fontSizeIcon: 14,
+    fontWeightStrong: 600, // Ant’s only global weight token (strong/headings). Full scale: index.css @theme + FIGMA-DEV-THEME-SYNC.md §4
 
     // ─── Sizing ───
     // sizePopupArrow: 16,
@@ -325,20 +322,16 @@ const themeConfig: ThemeConfig = {
   // ─── Component-Level Token Overrides ───
   // Override tokens for specific components without affecting others.
   // See: https://ant.design/docs/react/customize-theme#component-token
-  //
-  // components: {
-  //   Button: {
-  //     colorPrimary: '#5452f5',
-  //     borderRadius: 12,
-  //   },
-  //   Table: {
-  //     colorBgContainer: '#0a0a0a',
-  //     borderRadius: 16,
-  //   },
-  //   Drawer: {
-  //     colorBgElevated: '#141414',
-  //   },
-  // },
+  components: {
+    Button: {
+      // Figma Gradient DS — Buttons/Button S, M, L (node 4203-36010)
+      contentFontSizeSM: 13, // Button S: 13px, line height 16
+      contentFontSize: 14, // Button M: 14px, line height 20
+      contentFontSizeLG: 16, // Button L: 16px, line height 24 (Semi-bold in Figma)
+    },
+    // Table: { colorBgContainer: '#0a0a0a', borderRadius: 16 },
+    // Drawer: { colorBgElevated: '#141414' },
+  },
 };
 
 export default themeConfig;
