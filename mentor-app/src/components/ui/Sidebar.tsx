@@ -1,4 +1,6 @@
 import type React from 'react';
+import logoCollapsedUrl from '@/assets/logo-collapsed.svg';
+import logoExpandedUrl from '@/assets/logo-expanded.svg';
 
 /** Single nav item: key, label, icon, and optional path (defaults to #). */
 export interface SidebarNavItem {
@@ -76,12 +78,18 @@ export default function Sidebar({
   sections,
   activeKey,
   logoCollapsed = (
-    <span className="text-white font-medium text-xl">G</span>
+    <img
+      src={logoCollapsedUrl}
+      alt=""
+      className="size-10 shrink-0 object-contain"
+    />
   ),
   logoExpanded = (
-    <span className="font-semibold text-xl text-white whitespace-nowrap">
-      gradient
-    </span>
+    <img
+      src={logoExpandedUrl}
+      alt=""
+      className="h-10 w-full max-w-[200px] shrink-0 object-contain object-left"
+    />
   ),
   className,
 }: SidebarProps) {
