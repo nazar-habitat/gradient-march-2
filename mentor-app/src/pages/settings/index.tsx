@@ -1,10 +1,4 @@
-import {
-  Layout,
-  Tabs,
-  Typography,
-  Avatar,
-  Divider,
-} from 'antd';
+import { useState } from 'react';
 import {
   ChevronDownIcon,
   HomeIcon,
@@ -15,17 +9,27 @@ import {
   ArrowDownTrayIcon,
   DocumentTextIcon,
 } from '@/components/icons';
+import Layout from '../../components/ui/Layout';
+import Tabs from '../../components/ui/Tabs';
+import Text from '../../components/ui/Text';
+import Avatar from '../../components/ui/Avatar';
 import Button from '../../components/ui/Button';
 import Select from '../../components/ui/Select';
-import Radio from '../../components/ui/Radio';
+import RadioGroupCard, {
+  type RadioGroupCardOption,
+} from '../../components/ui/RadioGroupCard';
 import IconButton from '../../components/ui/IconButton';
 
 const { Header, Content, Sider } = Layout;
-const { Text } = Typography;
 
 const SIDEBAR_WIDTH = 96;
 const TIMEZONE_OPTIONS = [
   { value: 'Europe/Kiev', label: 'Eastern European Time (UTC+02:00)' },
+];
+
+const TIME_FORMAT_OPTIONS: RadioGroupCardOption<'24h' | '12h'>[] = [
+  { value: '24h', label: '24-hour', example: '14:42' },
+  { value: '12h', label: '12-hour', example: '2:42 PM' },
 ];
 
 const SETTINGS_TABS = [
@@ -49,6 +53,8 @@ const SIDEBAR_ICONS = [
 ];
 
 export default function SettingsPage() {
+  const [timeFormat, setTimeFormat] = useState<'24h' | '12h'>('24h');
+
   return (
     <Layout className="min-h-screen bg-black">
       <Sider
@@ -90,15 +96,12 @@ export default function SettingsPage() {
         </Header>
         <Content className="bg-black border border-neutral-800 border-b-0 rounded-t-3xl pt-10 px-10 pb-8">
           <Tabs
+            variant="settings"
+            tabBarGutter={24}
             defaultActiveKey="localization"
-            className="settings-tabs"
             items={SETTINGS_TABS.map((tab) => ({
               key: tab.key,
-              label: (
-                <span className="text-[13px] font-medium leading-4">
-                  {tab.label}
-                </span>
-              ),
+              label: tab.label,
               children:
                 tab.key === 'localization' ? (
                   <div className="flex flex-col gap-10 pt-6">
@@ -116,7 +119,6 @@ export default function SettingsPage() {
                         options={TIMEZONE_OPTIONS}
                         className="w-full"
                         style={{ width: '100%' }}
-                        suffixIcon={<ChevronDownIcon className="size-4" />}
                       />
                     </div>
                     <div className="flex flex-col gap-2 max-w-[428px]">
@@ -126,31 +128,12 @@ export default function SettingsPage() {
                       <Text className="!text-[13px] !text-neutral-500 !leading-5 mb-2">
                         Choose your preferred display format for time
                       </Text>
-                      <div className="rounded-xl border border-neutral-800 bg-neutral-900 overflow-hidden">
-                        <Radio.Group value="24h" className="!block !w-full">
-                          <div className="flex items-center justify-between px-3 py-3">
-                            <div className="flex items-center gap-2">
-                              <Radio value="24h" className="!text-white !text-sm">
-                                24-hour
-                              </Radio>
-                            </div>
-                            <Text className="!text-sm !font-medium !text-white">
-                              14:42
-                            </Text>
-                          </div>
-                          <Divider className="!my-0 !border-neutral-800" />
-                          <div className="flex items-center justify-between px-3 py-3">
-                            <div className="flex items-center gap-2">
-                              <Radio value="12h" className="!text-neutral-300 !text-sm">
-                                12-hour
-                              </Radio>
-                            </div>
-                            <Text className="!text-sm !font-medium !text-neutral-300">
-                              2:42 PM
-                            </Text>
-                          </div>
-                        </Radio.Group>
-                      </div>
+                      <RadioGroupCard
+                        value={timeFormat}
+                        onChange={setTimeFormat}
+                        options={TIME_FORMAT_OPTIONS}
+                        name="time-format"
+                      />
                     </div>
                     <div className="flex justify-end">
                       <Button disabled>Save Changes</Button>

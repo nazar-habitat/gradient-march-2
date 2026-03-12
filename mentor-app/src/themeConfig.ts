@@ -399,6 +399,21 @@ const themeConfig: ThemeConfig = {
       activeBorderColor: '#949494',
       colorError: '#fa7054',
     },
+    // ─── Tabs (Figma Gradient DS — Line tab node 4207-255671: Small 14px, Large 16px) ───
+    // States: default (fg-subtle), selected (fg-primary), hover (fg-tertiary), pressed, focused, disabled.
+    Tabs: {
+      // Inactive tab text — Figma: Foreground/fg-subtle (Neutral/400)
+      itemColor: '#949494',
+      // Selected tab text — Figma: Foreground/fg-primary
+      itemSelectedColor: '#ffffff',
+      // Hover tab text — Figma: Foreground/fg-tertiary
+      itemHoverColor: '#c6c6c6',
+      // Ink bar (line under selected tab) — Figma: Purple/500
+      inkBarColor: '#5452f5',
+      // Title typography — Figma Line tab Small: 14px Medium, line-height 24
+      titleFontSize: 14,
+      titleFontSizeLG: 16,
+    },
     // Table: { colorBgContainer: '#0a0a0a', borderRadius: 16 },
     // Drawer: { colorBgElevated: '#141414' },
   },

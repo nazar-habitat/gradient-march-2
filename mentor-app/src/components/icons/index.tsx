@@ -15,4 +15,7 @@ export {
   FolderIcon,
   CircleStackIcon,
   DocumentTextIcon,
+  XMarkIcon,
+  EyeIcon,
+  EyeSlashIcon,
 } from '@heroicons/react/24/outline';
