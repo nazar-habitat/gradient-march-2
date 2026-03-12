@@ -16,14 +16,14 @@ import Sidebar, {
 
 /**
  * Default nav sections — Figma Gradient Design System.
- * Icons (all from @heroicons/react/24/outline):
- *   Overview         → ChartBarSquareIcon (dashboard)
- *   Recommendations  → LightBulbIcon
- *   Implementations  → ListBulletIcon
- *   Data Quality     → TableCellsIcon
- *   ADC Analysis     → DocumentChartBarIcon
- *   Custom Reports   → Square3Stack3DIcon (reports stack)
- *   Export Data      → ArrowDownTrayIcon
+ * Icons (from @iconicicons/react, aliased in @/components/icons):
+ *   Overview         → ChartBarSquareIcon (DashboardIcon)
+ *   Recommendations  → LightBulbIcon (StarIcon)
+ *   Implementations  → ListBulletIcon (ClipboardIcon)
+ *   Data Quality     → TableCellsIcon (TableRowsIcon)
+ *   ADC Analysis     → DocumentChartBarIcon (PieChartIcon)
+ *   Custom Reports   → Square3Stack3DIcon (GridIcon)
+ *   Export Data      → ArrowDownTrayIcon (DownloadIcon)
  */
 export const DEFAULT_SIDEBAR_SECTIONS: SidebarSection[] = [
   {

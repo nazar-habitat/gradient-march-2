@@ -610,12 +610,15 @@ layer(base);
 }
 
 
-/* Sidebar: collapsed by default (96px), expands on hover (256px). Icons stay fixed. */
+/* Sidebar: collapsed by default (96px), expands on hover (256px) over content; grid unchanged. */
 .sidebar {
   width: 96px;
-  transition: width 0.2s ease;
+  margin-right: 0;
+  transition: width 0.2s ease, margin-right 0.2s ease;
+  z-index: 10;
   &:hover {
     width: 256px;
+    margin-right: -160px; /* 256 - 96: expansion floats over content, layout stays 96px */
     .logo {
       @apply opacity-0;
     }
