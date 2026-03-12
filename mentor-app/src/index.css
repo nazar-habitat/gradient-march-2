@@ -618,6 +618,11 @@ layer(base);
 .ant-drawer-footer {
   @apply p-0!;
 }
+/* Radio with label + description: 8px gap between radio and content */
+.radio-with-label-desc.ant-radio-wrapper .ant-radio + span {
+  margin-inline-start: 8px;
+}
+
 .custom-tab-radios{
   .ant-radio-button-wrapper{
     @apply text-white;

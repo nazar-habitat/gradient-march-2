@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ConfigProvider } from 'antd';
-import { PlusOutlined, SearchOutlined } from '@ant-design/icons';
+import { PlusIcon, MagnifyingGlassIcon } from '@/components/icons';
 import themeConfig from '../../themeConfig';
 import Input from './Input';
 
@@ -88,15 +88,15 @@ export const Layouts: Story = {
       </div>
       <div style={wrapStyle}>
         <span style={labelStyle}>Leading icon</span>
-        <Input placeholder="Placeholder" prefix={<PlusOutlined />} />
+        <Input placeholder="Placeholder" prefix={<PlusIcon className="size-5" />} />
       </div>
       <div style={wrapStyle}>
         <span style={labelStyle}>Trailing icon</span>
-        <Input placeholder="Placeholder" suffix={<PlusOutlined />} />
+        <Input placeholder="Placeholder" suffix={<PlusIcon className="size-5" />} />
       </div>
       <div style={wrapStyle}>
         <span style={labelStyle}>Leading and trailing icon</span>
-        <Input placeholder="Placeholder" prefix={<SearchOutlined />} suffix={<PlusOutlined />} />
+        <Input placeholder="Placeholder" prefix={<MagnifyingGlassIcon className="size-5" />} suffix={<PlusIcon className="size-5" />} />
       </div>
       <div style={wrapStyle}>
         <span style={labelStyle}>No label</span>

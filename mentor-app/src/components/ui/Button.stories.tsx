@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ConfigProvider } from 'antd';
-import { SearchOutlined, DownloadOutlined } from '@ant-design/icons';
+import { MagnifyingGlassIcon, ArrowDownTrayIcon } from '@/components/icons';
 import themeConfig from '../../themeConfig';
 import Button from './Button';
 
@@ -50,7 +50,7 @@ export const Playground: Story = {
     variant: 'solid',
     children: 'Button',
     size: 'medium',
-    icon: <SearchOutlined />,
+    icon: <MagnifyingGlassIcon className="size-5" />,
     iconPosition: 'start',
     disabled: false,
     loading: false,
@@ -182,17 +182,17 @@ export const Icons: Story = {
       {/* Placement */}
       <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
         <span style={{ width: 72, fontSize: 12, opacity: 0.5 }}>placement</span>
-        <Button variant="solid" icon={<SearchOutlined />} iconPosition="start">Icon Start</Button>
-        <Button variant="solid" icon={<DownloadOutlined />} iconPosition="end">Icon End</Button>
+        <Button variant="solid" icon={<MagnifyingGlassIcon className="size-5" />} iconPosition="start">Icon Start</Button>
+        <Button variant="solid" icon={<ArrowDownTrayIcon className="size-5" />} iconPosition="end">Icon End</Button>
       </div>
       {/* Across variants */}
       <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
         <span style={{ width: 72, fontSize: 12, opacity: 0.5 }}>variants</span>
-        <Button variant="solid" icon={<SearchOutlined />}>Solid</Button>
-        <Button variant="outlined" icon={<SearchOutlined />}>Outlined</Button>
-        <Button variant="filled" icon={<SearchOutlined />}>Filled</Button>
-        <Button variant="text" icon={<SearchOutlined />}>Text</Button>
-        <Button variant="link" icon={<SearchOutlined />}>Link</Button>
+        <Button variant="solid" icon={<MagnifyingGlassIcon className="size-5" />}>Solid</Button>
+        <Button variant="outlined" icon={<MagnifyingGlassIcon className="size-5" />}>Outlined</Button>
+        <Button variant="filled" icon={<MagnifyingGlassIcon className="size-5" />}>Filled</Button>
+        <Button variant="text" icon={<MagnifyingGlassIcon className="size-5" />}>Text</Button>
+        <Button variant="link" icon={<MagnifyingGlassIcon className="size-5" />}>Link</Button>
       </div>
       {/* Custom iconGap */}
       <ConfigProvider
@@ -209,8 +209,8 @@ export const Icons: Story = {
       >
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           <span style={{ width: 72, fontSize: 12, opacity: 0.5 }}>iconGap</span>
-          <Button variant="solid" icon={<SearchOutlined />}>Gap 16px</Button>
-          <Button variant="outlined" icon={<SearchOutlined />}>Gap 16px</Button>
+          <Button variant="solid" icon={<MagnifyingGlassIcon className="size-5" />}>Gap 16px</Button>
+          <Button variant="outlined" icon={<MagnifyingGlassIcon className="size-5" />}>Gap 16px</Button>
         </div>
       </ConfigProvider>
     </div>

@@ -6,15 +6,15 @@ import {
   Divider,
 } from 'antd';
 import {
-  DownOutlined,
-  HomeOutlined,
-  BulbOutlined,
-  UnorderedListOutlined,
-  FolderOutlined,
-  DatabaseOutlined,
-  DownloadOutlined,
-  FormOutlined,
-} from '@ant-design/icons';
+  ChevronDownIcon,
+  HomeIcon,
+  LightBulbIcon,
+  ListBulletIcon,
+  FolderIcon,
+  CircleStackIcon,
+  ArrowDownTrayIcon,
+  DocumentTextIcon,
+} from '@/components/icons';
 import Button from '../../components/ui/Button';
 import Select from '../../components/ui/Select';
 import Radio from '../../components/ui/Radio';
@@ -39,13 +39,13 @@ const SETTINGS_TABS = [
 ];
 
 const SIDEBAR_ICONS = [
-  HomeOutlined,
-  BulbOutlined,
-  UnorderedListOutlined,
-  FolderOutlined,
-  DatabaseOutlined,
-  DownloadOutlined,
-  FormOutlined,
+  HomeIcon,
+  LightBulbIcon,
+  ListBulletIcon,
+  FolderIcon,
+  CircleStackIcon,
+  ArrowDownTrayIcon,
+  DocumentTextIcon,
 ];
 
 export default function SettingsPage() {
@@ -85,7 +85,7 @@ export default function SettingsPage() {
             >
               UM
             </Avatar>
-            <DownOutlined className="text-neutral-400 text-sm" />
+            <ChevronDownIcon className="size-3.5 text-neutral-400" />
           </div>
         </Header>
         <Content className="bg-black border border-neutral-800 border-b-0 rounded-t-3xl pt-10 px-10 pb-8">
@@ -116,7 +116,7 @@ export default function SettingsPage() {
                         options={TIMEZONE_OPTIONS}
                         className="w-full"
                         style={{ width: '100%' }}
-                        suffixIcon={<DownOutlined />}
+                        suffixIcon={<ChevronDownIcon className="size-4" />}
                       />
                     </div>
                     <div className="flex flex-col gap-2 max-w-[428px]">

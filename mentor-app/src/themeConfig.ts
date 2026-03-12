@@ -189,9 +189,9 @@ const themeConfig: ThemeConfig = {
     fontSizeHeading3: 24,
     fontSizeHeading4: 20,
     fontSizeHeading5: 16,
-    lineHeight: 1.5, // 24/16 — Figma Body/L line height 24
-    lineHeightLG: 1.5,
-    lineHeightSM: 1.5,
+    lineHeight: 20 / 14, // 14px text → 20px line height (Figma Body/M, Button M)
+    lineHeightLG: 1.5, // 24/16 — Figma Body/L line height 24
+    lineHeightSM: 16 / 12, // 12px text → 16px line height (fontSizeSM)
     lineHeightHeading1: 1.21,
     lineHeightHeading2: 1.27,
     lineHeightHeading3: 1.33,
@@ -386,6 +386,17 @@ const themeConfig: ThemeConfig = {
       activeShadow: 'none', // Figma uses border-only focus, no glow
       errorActiveShadow: 'none',
       // Error state (Figma Outline/outline-error, Foreground/fg-error)
+      colorError: '#fa7054',
+    },
+    // ─── Select (same sizing as Input/Button: 32/40/48, radius 10/12/16 in Select.tsx) ───
+    Select: {
+      colorBgContainer: '#191919',
+      controlHeightSM: 32,
+      controlHeight: 40,
+      controlHeightLG: 48,
+      borderRadius: 12,
+      hoverBorderColor: '#4a4a4a',
+      activeBorderColor: '#949494',
       colorError: '#fa7054',
     },
     // Table: { colorBgContainer: '#0a0a0a', borderRadius: 16 },
