@@ -10,10 +10,11 @@ import {
   SettingsIcon as Cog6ToothIcon,
   ChevronDownIcon,
   HomeIcon,
-  StarIcon as LightBulbIcon,
+  SunIcon as LightBulbIcon,
   ClipboardIcon as ListBulletIcon,
   FolderIcon,
   ServerIcon as CircleStackIcon,
+  ServerIcon as DatabaseIcon,
   FileTextIcon as DocumentTextIcon,
   CloseIcon as XMarkIcon,
   EyeIcon,
@@ -23,6 +24,8 @@ import {
   TableRowsIcon as TableCellsIcon,
   PieChartIcon as DocumentChartBarIcon,
   GridIcon as Square3Stack3DIcon,
+  MenuIcon as Menu2Icon,
+  LayersIcon as MultipleFoldersIcon,
 } from '@iconicicons/react';
 
 export {
@@ -37,6 +40,7 @@ export {
   ListBulletIcon,
   FolderIcon,
   CircleStackIcon,
+  DatabaseIcon,
   DocumentTextIcon,
   XMarkIcon,
   EyeIcon,
@@ -46,4 +50,6 @@ export {
   TableCellsIcon,
   DocumentChartBarIcon,
   Square3Stack3DIcon,
+  Menu2Icon,
+  MultipleFoldersIcon,
 };

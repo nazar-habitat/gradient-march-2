@@ -1,7 +1,8 @@
 import { ConfigProvider } from 'antd';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { createRouter, RouterProvider } from '@tanstack/react-router';
+import { routeTree } from './routeTree';
 import themeConfig from './themeConfig';
-import SettingsPage from './pages/settings';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -12,11 +13,13 @@ const queryClient = new QueryClient({
   },
 });
 
+const router = createRouter({ routeTree });
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ConfigProvider theme={themeConfig}>
-        <SettingsPage />
+        <RouterProvider router={router} />
       </ConfigProvider>
     </QueryClientProvider>
   );

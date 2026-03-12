@@ -2,7 +2,7 @@ import type { ComponentProps } from 'react';
 import { Layout as AntLayout } from 'antd';
 import type { LayoutProps as AntLayoutProps } from 'antd';
 
-const { Header: AntHeader, Content: AntContent, Sider: AntSider } = AntLayout;
+const { Header: AntHeader, Content: AntContent } = AntLayout;
 
 export type LayoutProps = AntLayoutProps;
 
@@ -41,20 +41,7 @@ function Content({ className, style, ...rest }: ContentProps) {
   );
 }
 
-export type SiderProps = ComponentProps<typeof AntSider>;
-
-function Sider({ className, style, ...rest }: SiderProps) {
-  return (
-    <AntSider
-      className={className}
-      style={style}
-      {...rest}
-    />
-  );
-}
-
 Layout.Header = Header;
 Layout.Content = Content;
-Layout.Sider = Sider;
 
 export default Layout;

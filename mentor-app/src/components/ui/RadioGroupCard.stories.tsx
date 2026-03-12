@@ -40,12 +40,14 @@ export const Default: Story = {
     name: 'time-format',
   },
   render: (args) => {
-    const [value, setValue] = useState<'24h' | '12h'>(args.value ?? '24h');
+    const initial = (args.value ?? '24h') as '24h' | '12h';
+    const [value, setValue] = useState<'24h' | '12h'>(initial);
     return (
-      <RadioGroupCard
+      <RadioGroupCard<'24h' | '12h'>
         {...args}
+        options={timeFormatOptions}
         value={value}
-        onChange={setValue}
+        onChange={(v) => setValue(v)}
       />
     );
   },
@@ -59,12 +61,14 @@ export const TimeFormat: Story = {
     name: 'time-format',
   },
   render: (args) => {
-    const [value, setValue] = useState<'24h' | '12h'>(args.value ?? '24h');
+    const initial = (args.value ?? '24h') as '24h' | '12h';
+    const [value, setValue] = useState<'24h' | '12h'>(initial);
     return (
-      <RadioGroupCard
+      <RadioGroupCard<'24h' | '12h'>
         {...args}
+        options={timeFormatOptions}
         value={value}
-        onChange={setValue}
+        onChange={(v) => setValue(v)}
       />
     );
   },
