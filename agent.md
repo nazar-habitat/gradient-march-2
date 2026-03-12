@@ -55,6 +55,10 @@ Styling is handled via **Ant Design v5's ConfigProvider token system** — not s
 
 When building or adjusting the theme, define tokens in the ConfigProvider config — do not write raw color values or spacing in component CSS.
 
+## Icons
+
+Use **iconic icons** (the project’s installed set) by default. In **mentor-app**, import from `@/components/icons` — these re-export Hero Icons (`@heroicons/react`) in outline style. Only use a different icon library or inline SVGs when explicitly requested.
+
 ## Design-to-code workflow
 
 1. Designer reads the package docs (stack, features).
