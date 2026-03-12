@@ -10,6 +10,28 @@ layer(base);
 @theme {
   --font-sans: Inter, sans-serif;
 
+  /* Typography scale (mirrors themeConfig / Figma — see docs/FIGMA-DEV-THEME-SYNC.md §4) */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-heading-1: 38px;
+  --font-size-heading-2: 30px;
+  --font-size-heading-3: 24px;
+  --font-size-heading-4: 20px;
+  --font-size-heading-5: 16px;
+  --line-height-tight: 1.21;
+  --line-height-snug: 1.27;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.5;
+
+  /* Font weights (mirrors themeConfig.fontWeightStrong & Figma — see docs/FIGMA-DEV-THEME-SYNC.md §4) */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
   --color-transparent: transparent;
   --color-black: #000;
   --color-white: #fff;
@@ -120,6 +142,7 @@ layer(base);
     @apply text-sm font-medium leading-5 h-10 px-4 py-2.5 rounded-xl  hover:bg-white;
   }
 }
+
 
 @utility btn-primary {
   @layer components {
@@ -545,8 +568,41 @@ layer(base);
 
       }
 
-    }
   }
+
+  /* Nav border: neutral-850 (darker than fields, matches content area) */
+  .ant-tabs-nav::before {
+    border-color: var(--color-neutral-850);
+  }
+
+  /* Line tab (Figma node 4207-255671): ink bar 2px, pill radius, 4px gap, 14px/24 typography */
+  .ant-tabs-top > .ant-tabs-nav .ant-tabs-ink-bar,
+  .ant-tabs-bottom > .ant-tabs-nav .ant-tabs-ink-bar {
+    height: 2px;
+    border-radius: 20px;
+  }
+  /* Gap between tabs: 24px (use tabBarGutter={24} on Tabs; this backs it up) */
+  .ant-tabs-top > .ant-tabs-nav .ant-tabs-nav-list .ant-tabs-tab + .ant-tabs-tab,
+  .ant-tabs-bottom > .ant-tabs-nav .ant-tabs-nav-list .ant-tabs-tab + .ant-tabs-tab {
+    margin-inline-start: 24px !important;
+  }
+  .ant-tabs .ant-tabs-tab .ant-tabs-tab-btn {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  /* Figma: disabled tab text fg-disabled (#636363) */
+  .ant-tabs .ant-tabs-tab.ant-tabs-tab-disabled .ant-tabs-tab-btn {
+    color: #636363;
+  }
+  /* Figma: focused tab — outline-accent, 8px radius */
+  .ant-tabs .ant-tabs-tab .ant-tabs-tab-btn:focus-visible {
+    outline: 1.5px solid #5452f5;
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+
+}
 
 
 .sidebar {
@@ -595,6 +651,12 @@ layer(base);
 .ant-drawer-footer {
   @apply p-0!;
 }
+
+/* Radio with label + description: 8px gap between radio and content */
+.radio-with-label-desc.ant-radio-wrapper .ant-radio + span {
+  margin-inline-start: 8px;
+}
+
 .custom-tab-radios{
   .ant-radio-button-wrapper{
     @apply text-white;
@@ -776,6 +838,14 @@ layer(base);
 }
 
 .ant-btn-icon{display: flex;}
+
+/* Disabled solid/filled buttons: no border (match default state; Ant adds border in disabled state) */
+.ant-btn.ant-btn-variant-solid:disabled,
+.ant-btn.ant-btn-variant-filled:disabled,
+.ant-btn.ant-btn-variant-solid.ant-btn-disabled,
+.ant-btn.ant-btn-variant-filled.ant-btn-disabled {
+  border: none !important;
+}
 
 /* Print styles for headers and page breaks */
 .print-header {

@@ -17,20 +17,40 @@ const themeConfig: ThemeConfig = {
   algorithm: theme.darkAlgorithm,
 
   token: {
+    // ─── Seed tokens (Figma Gradient Design System — see docs/FIGMA-DEV-THEME-SYNC.md) ───
+    colorPrimary: '#5452f5', // Figma: Purple/500
+    colorSuccess: '#26ea5d', // Figma: Green/500
+    colorWarning: '#ffae18', // Figma: Orange/500
+    colorError: '#e53e1c', // Figma: Red/600
+    colorInfo: '#5452f5',
+    colorLink: '#5452f5',
+    colorTextBase: '#ffffff', // Figma: Foreground/fg-primary
+    colorBgBase: '#000000', // Figma: Neutral/Black
 
-    // ─── Seed Tokens (primary inputs — change these to cascade) ───
-    // colorPrimary: "#1668dc",
-    // colorSuccess: "#49aa19",
-    // colorWarning: "#d89614",
-    // colorError: "#dc4446",
-    // colorInfo: "#1668dc",
-    // colorLink: "#1668dc",
-    // colorTextBase: "#fff",
-    // colorBgBase: "#000",
-    // fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,\n'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',\n'Noto Color Emoji'",
+    fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+    fontSize: 14,
+    borderRadius: 8,
+
+    // ─── Background / text / border (Figma Neutral scale) ───
+    colorBgContainer: '#141414', // Figma: Neutral/950
+    colorBgElevated: '#191919', // Figma: Neutral/900
+    colorText: 'rgba(255,255,255,0.9)',
+    colorTextSecondary: '#dedede', // Figma: Neutral/100
+    colorTextTertiary: '#949494', // Figma: Neutral/400
+    colorBorder: '#313131', // Figma: Neutral/800
+    colorBorderSecondary: '#4a4a4a', // Figma: Neutral/700
+
+    // ─── Input / Field (Figma Inputs — node 1833-108316) ───
+    colorTextPlaceholder: '#636363', // Figma: Foreground/fg-disabled
+    colorTextDisabled: '#313131', // Figma: Foreground/fg-disabled-low (disabled placeholder)
+
+    // Primary variants (Figma Purple/600, /700)
+    colorPrimaryHover: '#4341f1',
+    colorPrimaryActive: '#3735bb',
+
+    // ─── Rest of seed tokens (uncomment to override) ───
     // fontFamilyCode: "'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
     // fontSize: 14,
-    // borderRadius: 6,
     // sizeUnit: 4,
     // sizeStep: 4,
     // controlHeight: 32,
@@ -160,28 +180,25 @@ const themeConfig: ThemeConfig = {
     // colorSplit: "rgba(253,253,253,0.12)",
     // colorTextLightSolid: "#fff",
 
-    // ─── Typography ───
-    // fontSizeSM: 12,
-    // fontSizeLG: 16,
-    // fontSizeXL: 20,
-    // fontSizeHeading1: 38,
-    // fontSizeHeading2: 30,
-    // fontSizeHeading3: 24,
-    // fontSizeHeading4: 20,
-    // fontSizeHeading5: 16,
-    // lineHeight: 1.5714285714285714,
-    // lineHeightLG: 1.5,
-    // lineHeightSM: 1.6666666666666667,
-    // fontHeight: 22,
-    // fontHeightLG: 24,
-    // fontHeightSM: 20,
-    // lineHeightHeading1: 1.2105263157894737,
-    // lineHeightHeading2: 1.2666666666666666,
-    // lineHeightHeading3: 1.3333333333333333,
-    // lineHeightHeading4: 1.4,
-    // lineHeightHeading5: 1.5,
-    // fontSizeIcon: 12,
-    // fontWeightStrong: 600,
+    // ─── Typography (Figma Gradient Design System — see docs/FIGMA-DEV-THEME-SYNC.md § Typography) ───
+    fontSizeSM: 12, // Figma: Body/M or small UI (captions, small buttons)
+    fontSizeLG: 16, // Figma: Body/L large
+    fontSizeXL: 20,
+    fontSizeHeading1: 38,
+    fontSizeHeading2: 30,
+    fontSizeHeading3: 24,
+    fontSizeHeading4: 20,
+    fontSizeHeading5: 16,
+    lineHeight: 20 / 14, // 14px text → 20px line height (Figma Body/M, Button M)
+    lineHeightLG: 1.5, // 24/16 — Figma Body/L line height 24
+    lineHeightSM: 16 / 12, // 12px text → 16px line height (fontSizeSM)
+    lineHeightHeading1: 1.21,
+    lineHeightHeading2: 1.27,
+    lineHeightHeading3: 1.33,
+    lineHeightHeading4: 1.4,
+    lineHeightHeading5: 1.5,
+    fontSizeIcon: 14,
+    fontWeightStrong: 600, // Ant’s only global weight token (strong/headings). Full scale: index.css @theme + FIGMA-DEV-THEME-SYNC.md §4
 
     // ─── Sizing ───
     // sizePopupArrow: 16,
@@ -309,20 +326,97 @@ const themeConfig: ThemeConfig = {
   // ─── Component-Level Token Overrides ───
   // Override tokens for specific components without affecting others.
   // See: https://ant.design/docs/react/customize-theme#component-token
-  //
-  // components: {
-  //   Button: {
-  //     colorPrimary: '#5452f5',
-  //     borderRadius: 12,
-  //   },
-  //   Table: {
-  //     colorBgContainer: '#0a0a0a',
-  //     borderRadius: 16,
-  //   },
-  //   Drawer: {
-  //     colorBgElevated: '#141414',
-  //   },
-  // },
+  // Component tokens override only that component (e.g. Button heights don't affect Input).
+  components: {
+    Button: {
+      // Figma Gradient DS — Size section (node 4206-255475): Large 48px, Medium 40px, Small 32px.
+      // Heights
+      controlHeightSM: 32, // Small: 32px
+      controlHeight: 40, // Medium: 40px
+      controlHeightLG: 48, // Large: 48px
+      // Font (Buttons/Button S, M, L)
+      contentFontSizeSM: 13,
+      contentFontSize: 14,
+      contentFontSizeLG: 16,
+      contentLineHeightSM: 16,
+      contentLineHeight: 20,
+      contentLineHeightLG: 24,
+      // Horizontal padding (side paddings)
+      paddingInlineSM: 12, // Small: 12px
+      paddingInline: 16, // Medium: 16px
+      paddingInlineLG: 24, // Large: 24px
+      // Vertical padding (derived to hit target height with content line height)
+      paddingBlockSM: 8,
+      paddingBlock: 10,
+      paddingBlockLG: 12,
+      // Icon ↔ text gap. Figma: Small 6px, Medium 8px, Large 10px. Single token = 8 (medium).
+      iconGap: 8,
+      // Border radius: Ant Button has no per-size borderRadius token; we use 12 for default (medium).
+      // For 10/12/16 per size, Button wrapper applies borderRadius by size (see Button.tsx).
+      borderRadius: 12,
+      // Remove default box-shadow on buttons (Figma has none)
+      defaultShadow: 'none',
+      primaryShadow: 'none',
+      dangerShadow: 'none',
+    },
+    // ─── Input (Figma Gradient DS — Inputs node 1833-108316: 3 sizes, layouts, 5 states) ───
+    Input: {
+      // Background (Figma Background/bg-tertiary)
+      colorBgContainer: '#191919',
+      // Sizes (without label): Small 32px, Medium 40px, Large 48px (same as Button)
+      controlHeightSM: 32,
+      controlHeight: 40,
+      controlHeightLG: 48,
+      // Padding: Small px 10 / py 6, Medium px 12 / py 8, Large px 16 / py 12
+      paddingInlineSM: 10,
+      paddingInline: 12,
+      paddingInlineLG: 16,
+      paddingBlockSM: 6,
+      paddingBlock: 8,
+      paddingBlockLG: 12,
+      // Typography: Small 13px, Medium 14px, Large 16px
+      inputFontSizeSM: 13,
+      inputFontSize: 14,
+      inputFontSizeLG: 16,
+      // Border radius: per-size 10/12/16 applied in Input.tsx (like Button)
+      borderRadius: 12,
+      // States: default border already from global colorBorder (outline-primary)
+      hoverBorderColor: '#4a4a4a', // Figma: Outline/outline-secondary (hover)
+      activeBorderColor: '#949494', // Figma: Outline/outline-tertiary (active/focus)
+      activeShadow: 'none', // Figma uses border-only focus, no glow
+      errorActiveShadow: 'none',
+      // Error state (Figma Outline/outline-error, Foreground/fg-error)
+      colorError: '#fa7054',
+    },
+    // ─── Select (same sizing as Input/Button: 32/40/48, radius 10/12/16 in Select.tsx) ───
+    Select: {
+      colorBgContainer: '#191919',
+      controlHeightSM: 32,
+      controlHeight: 40,
+      controlHeightLG: 48,
+      borderRadius: 12,
+      hoverBorderColor: '#4a4a4a',
+      activeBorderColor: '#949494',
+      colorError: '#fa7054',
+    },
+    // ─── Tabs (Figma Gradient DS — Line tab node 4207-255671: Small 14px, Large 16px) ───
+    // States: default (fg-subtle), selected (fg-primary), hover (fg-tertiary), pressed, focused, disabled.
+    Tabs: {
+      // Inactive tab text — Figma: Foreground/fg-subtle (Neutral/400)
+      itemColor: '#949494',
+      // Selected tab text — Figma: Foreground/fg-primary
+      itemSelectedColor: '#ffffff',
+      // Hover tab text — Figma: Foreground/fg-tertiary
+      itemHoverColor: '#c6c6c6',
+      // Ink bar (line under selected tab) — Figma: Purple/500
+      inkBarColor: '#5452f5',
+      // Title typography — Figma Line tab Small: 14px Medium, line-height 24
+      titleFontSize: 14,
+      titleFontSizeLG: 16,
+    },
+    // Table: { colorBgContainer: '#0a0a0a', borderRadius: 16 },
+    // Drawer: { colorBgElevated: '#141414' },
+  },
 };
 
 export default themeConfig;

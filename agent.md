@@ -1,5 +1,11 @@
 # Mentor — Design Team Package
 
+## Project goal and workspace prompt
+
+For the **mentor-app** workspace goal, theming strategy, and a reusable prompt for AI/agents, see **docs/PROJECT-GOAL-AND-PROMPT.md**.
+
+---
+
 ## What this project is
 
 **Mentor** is a **data center cooling optimization platform**. It provides analytics, recommendations, and insights to help operators save energy, water, and emissions — making data center infrastructure more sustainable.

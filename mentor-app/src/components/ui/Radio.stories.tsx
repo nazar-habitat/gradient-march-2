@@ -31,12 +31,37 @@ export const Disabled: Story = {
   args: { children: 'Disabled', disabled: true },
 };
 
+export const WithLabelAndDescription: Story = {
+  args: {
+    label: 'Monthly billing',
+    description: 'Pay every month, cancel anytime.',
+    value: 'monthly',
+  },
+};
+
 export const Group: Story = {
   render: () => (
     <Radio.Group defaultValue="a">
       <Radio value="a">Option A</Radio>
       <Radio value="b">Option B</Radio>
       <Radio value="c">Option C</Radio>
+    </Radio.Group>
+  ),
+};
+
+export const GroupWithLabelAndDescription: Story = {
+  render: () => (
+    <Radio.Group defaultValue="monthly" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <Radio
+        value="monthly"
+        label="Monthly billing"
+        description="Pay every month, cancel anytime."
+      />
+      <Radio
+        value="yearly"
+        label="Yearly billing"
+        description="Save 20% compared to monthly."
+      />
     </Radio.Group>
   ),
 };
