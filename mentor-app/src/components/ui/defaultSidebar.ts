@@ -10,6 +10,7 @@ import {
   DatabaseIcon,
   MultipleFoldersIcon,
   ArrowDownTrayIcon,
+  Cog6ToothIcon,
 } from '@/components/icons';
 import type { SidebarSection } from './Sidebar';
 
@@ -20,29 +21,30 @@ export const defaultSidebarSections: SidebarSection[] = [
         key: 'overview',
         label: 'Overview',
         icon: ChartBarSquareIcon,
-        path: '#',
+        path: '/',
       },
     ],
   },
   {
     label: 'Improvements',
     items: [
-      { key: 'recommendations', label: 'Recommendations', icon: LightBulbIcon, path: '#' },
-      { key: 'implementations', label: 'Implementations', icon: ListBulletIcon, path: '#' },
-      { key: 'data-quality', label: 'Data Quality', icon: Menu2Icon, path: '#' },
+      { key: 'recommendations', label: 'Recommendations', icon: LightBulbIcon, path: '/recommendations' },
+      { key: 'implementations', label: 'Implementations', icon: ListBulletIcon, path: '/implementations' },
+      { key: 'data-quality', label: 'Data Quality', icon: Menu2Icon, path: '/data-quality' },
     ],
   },
   {
     label: 'Analysis',
     items: [
-      { key: 'adc-analysis', label: 'ADC Analysis', icon: DatabaseIcon, path: '#' },
+      { key: 'adc-analysis', label: 'ADC Analysis', icon: DatabaseIcon, path: '/adc-analysis' },
     ],
   },
   {
     label: 'Other',
     items: [
-      { key: 'custom-reports', label: 'Custom Reports', icon: MultipleFoldersIcon, path: '#' },
-      { key: 'export-data', label: 'Export Data', icon: ArrowDownTrayIcon, path: '#' },
+      { key: 'custom-reports', label: 'Custom Reports', icon: MultipleFoldersIcon, path: '/custom-reports' },
+      { key: 'export-data', label: 'Export Data', icon: ArrowDownTrayIcon, path: '/export-data' },
+      { key: 'settings', label: 'Settings', icon: Cog6ToothIcon, path: '/settings' },
     ],
   },
 ];

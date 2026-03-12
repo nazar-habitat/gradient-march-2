@@ -1,16 +1,14 @@
 import { useState } from 'react';
 import { ChevronDownIcon } from '@/components/icons';
-import Layout from '../../components/ui/Layout';
-import Sidebar from '../../components/ui/Sidebar';
-import { defaultSidebarSections } from '../../components/ui/defaultSidebar';
-import Tabs from '../../components/ui/Tabs';
-import Text from '../../components/ui/Text';
-import Avatar from '../../components/ui/Avatar';
-import Button from '../../components/ui/Button';
-import Select from '../../components/ui/Select';
+import Layout from '@/components/ui/Layout';
+import Tabs from '@/components/ui/Tabs';
+import Text from '@/components/ui/Text';
+import Avatar from '@/components/ui/Avatar';
+import Button from '@/components/ui/Button';
+import Select from '@/components/ui/Select';
 import RadioGroupCard, {
   type RadioGroupCardOption,
-} from '../../components/ui/RadioGroupCard';
+} from '@/components/ui/RadioGroupCard';
 
 const { Header, Content } = Layout;
 const CONTENT_MAX_WIDTH = 428;
@@ -142,32 +140,30 @@ function LocalizationTabContent() {
   );
 }
 
+/** Settings page content (header + tabs). Sidebar is provided by the root layout when using TanStack Router. */
 export default function SettingsPage() {
   return (
-    <div className="flex min-h-screen bg-black">
-      <Sidebar sections={defaultSidebarSections} />
-      <Layout className="flex-1 flex flex-col min-h-screen bg-black">
-        <SettingsHeader />
-        <Content className="bg-black border border-neutral-800 border-b-0 rounded-t-3xl pt-10 px-10 pb-8">
-          <Tabs
-            variant="settings"
-            tabBarGutter={24}
-            defaultActiveKey="localization"
-            items={SETTINGS_TABS.map((tab) => ({
-              key: tab.key,
-              label: tab.label,
-              children:
-                tab.key === 'localization' ? (
-                  <LocalizationTabContent />
-                ) : (
-                  <div className="pt-6 text-neutral-500 text-sm">
-                    {tab.label} — coming soon
-                  </div>
-                ),
-            }))}
-          />
-        </Content>
-      </Layout>
-    </div>
+    <Layout className="flex-1 flex flex-col min-h-screen bg-black"> 
+      <SettingsHeader />
+      <Content className="bg-black border border-neutral-800 border-b-0 rounded-t-3xl pt-10 px-10 pb-8">
+        <Tabs
+          variant="settings"
+          tabBarGutter={24}
+          defaultActiveKey="localization"
+          items={SETTINGS_TABS.map((tab) => ({
+            key: tab.key,
+            label: tab.label,
+            children:
+              tab.key === 'localization' ? (
+                <LocalizationTabContent />
+              ) : (
+                <div className="pt-6 text-neutral-500 text-sm">
+                  {tab.label} — coming soon
+                </div>
+              ),
+          }))}
+        />
+      </Content>
+    </Layout>
   );
 }

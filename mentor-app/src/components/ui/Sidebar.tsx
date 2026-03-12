@@ -1,4 +1,5 @@
 import type React from 'react';
+import { Link } from '@tanstack/react-router';
 import logoIconUrl from '@/assets/logo-collapsed.svg';
 
 /** Single nav item: key, label, icon, and optional path (defaults to #). */
@@ -53,12 +54,8 @@ function SidebarMenuItem({
     ? 'bg-[var(--color-primary,#5452f5)] text-white'
     : 'text-neutral-400 hover:bg-neutral-900 hover:text-white';
 
-  return (
-    <a
-      href={path}
-      className={`${base} ${state} ${isActive ? 'active' : ''}`}
-      data-active={isActive || undefined}
-    >
+  const content = (
+    <>
       <span className="sidebar-icon-slot flex shrink-0 items-center justify-center size-10 rounded-[12px] text-current">
         <span
           className="icon-wrapper flex shrink-0 items-center justify-center text-current [&_svg]:size-full [&_svg]:shrink-0 [&_svg]:block"
@@ -70,6 +67,29 @@ function SidebarMenuItem({
       <span className="text-node text-sm font-medium leading-6 min-w-0 truncate text-current">
         {item.label}
       </span>
+    </>
+  );
+
+  const isInternal = path.startsWith('/');
+  if (isInternal) {
+    return (
+      <Link
+        to={path}
+        className={`${base} ${state} ${isActive ? 'active' : ''}`}
+        data-active={isActive || undefined}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a
+      href={path}
+      className={`${base} ${state} ${isActive ? 'active' : ''}`}
+      data-active={isActive || undefined}
+    >
+      {content}
     </a>
   );
 }

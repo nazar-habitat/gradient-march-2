@@ -1,4 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import {
+  createRouter,
+  createRootRoute,
+  RouterProvider,
+} from '@tanstack/react-router';
 import Sidebar, {
   SIDEBAR_WIDTH_COLLAPSED_PX,
   SIDEBAR_WIDTH_EXPANDED_PX,
@@ -13,14 +18,20 @@ const meta: Meta<typeof Sidebar> = {
     layout: 'fullscreen',
   },
   decorators: [
-    (Story) => (
-      <div className="flex min-h-screen bg-black">
-        <Story />
-        <main className="flex-1 p-5 text-neutral-400">
-          Content area (sidebar collapsed = {SIDEBAR_WIDTH_COLLAPSED_PX}px, expanded = {SIDEBAR_WIDTH_EXPANDED_PX}px)
-        </main>
-      </div>
-    ),
+    (Story) => {
+      const rootRoute = createRootRoute({
+        component: () => (
+          <div className="flex min-h-screen bg-black">
+            <Story />
+            <main className="flex-1 p-5 text-neutral-400">
+              Content area (sidebar collapsed = {SIDEBAR_WIDTH_COLLAPSED_PX}px, expanded = {SIDEBAR_WIDTH_EXPANDED_PX}px)
+            </main>
+          </div>
+        ),
+      });
+      const router = createRouter({ routeTree: rootRoute });
+      return <RouterProvider router={router} />;
+    },
   ],
 };
 
@@ -50,7 +61,6 @@ export const NoActiveItem: Story = {
 
 /** Sidebar forced to expanded state (256px) without hover. Story id: ui-sidebar--force-expanded */
 export const ForceExpanded: Story = {
-  id: 'force-expanded',
   name: 'Force expanded',
   args: {
     sections: defaultSidebarSections,
