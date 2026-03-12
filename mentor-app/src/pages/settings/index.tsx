@@ -1,15 +1,8 @@
 import { useState } from 'react';
-import {
-  ChevronDownIcon,
-  HomeIcon,
-  LightBulbIcon,
-  ListBulletIcon,
-  FolderIcon,
-  CircleStackIcon,
-  ArrowDownTrayIcon,
-  DocumentTextIcon,
-} from '@/components/icons';
+import { ChevronDownIcon } from '@/components/icons';
 import Layout from '../../components/ui/Layout';
+import Sidebar from '../../components/ui/Sidebar';
+import { defaultSidebarSections } from '../../components/ui/defaultSidebar';
 import Tabs from '../../components/ui/Tabs';
 import Text from '../../components/ui/Text';
 import Avatar from '../../components/ui/Avatar';
@@ -18,11 +11,8 @@ import Select from '../../components/ui/Select';
 import RadioGroupCard, {
   type RadioGroupCardOption,
 } from '../../components/ui/RadioGroupCard';
-import IconButton from '../../components/ui/IconButton';
 
-const { Header, Content, Sider } = Layout;
-
-const SIDEBAR_WIDTH = 96;
+const { Header, Content } = Layout;
 const CONTENT_MAX_WIDTH = 428;
 const CONTENT_GAP = 24;
 
@@ -68,43 +58,6 @@ const SETTINGS_TABS = [
   { key: 'urgency-effort', label: 'Urgency & Effort' },
   { key: 'impact-areas', label: 'Impact Areas' },
 ];
-
-const SIDEBAR_ICONS = [
-  HomeIcon,
-  LightBulbIcon,
-  ListBulletIcon,
-  FolderIcon,
-  CircleStackIcon,
-  ArrowDownTrayIcon,
-  DocumentTextIcon,
-];
-
-function SettingsSidebar() {
-  return (
-    <Sider
-      width={SIDEBAR_WIDTH}
-      className="!bg-black border-r border-neutral-800"
-      style={{ minHeight: '100vh' }}
-    >
-      <div className="flex flex-col h-full py-5 px-[28px]">
-        <div className="flex items-center justify-center h-10 w-full shrink-0 mb-5">
-          <span className="text-white font-medium text-xl">M</span>
-        </div>
-        <div className="flex flex-1 flex-col gap-5 items-center w-10">
-          {SIDEBAR_ICONS.map((Icon, index) => (
-            <IconButton
-              key={index}
-              variant="text"
-              colorScheme="neutral"
-              icon={<Icon className="text-lg" />}
-              className="!size-10 !flex !items-center !justify-center !rounded-xl !p-0"
-            />
-          ))}
-        </div>
-      </div>
-    </Sider>
-  );
-}
 
 function SettingsHeader() {
   return (
@@ -191,9 +144,9 @@ function LocalizationTabContent() {
 
 export default function SettingsPage() {
   return (
-    <Layout className="min-h-screen bg-black">
-      <SettingsSidebar />
-      <Layout className="flex-1 min-h-screen bg-black">
+    <div className="flex min-h-screen bg-black">
+      <Sidebar sections={defaultSidebarSections} />
+      <Layout className="flex-1 flex flex-col min-h-screen bg-black">
         <SettingsHeader />
         <Content className="bg-black border border-neutral-800 border-b-0 rounded-t-3xl pt-10 px-10 pb-8">
           <Tabs
@@ -215,6 +168,6 @@ export default function SettingsPage() {
           />
         </Content>
       </Layout>
-    </Layout>
+    </div>
   );
 }

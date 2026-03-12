@@ -1,63 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-  ChartBarSquareIcon,
-  LightBulbIcon,
-  ListBulletIcon,
-  Menu2Icon,
-  DatabaseIcon,
-  MultipleFoldersIcon,
-  ArrowDownTrayIcon,
-} from '@/components/icons';
 import Sidebar, {
-  type SidebarSection,
   SIDEBAR_WIDTH_COLLAPSED_PX,
   SIDEBAR_WIDTH_EXPANDED_PX,
 } from './Sidebar';
-
-/**
- * Default nav sections — Figma Gradient Design System.
- * Icons (from @iconicicons/react, aliased in @/components/icons):
- *   Overview         → ChartBarSquareIcon (DashboardIcon)
- *   Recommendations  → LightBulbIcon (SunIcon / bulb)
- *   Implementations  → ListBulletIcon (ClipboardIcon)
- *   Data Quality     → Menu2Icon (MenuIcon)
- *   ADC Analysis     → DatabaseIcon (ServerIcon)
- *   Custom Reports   → MultipleFoldersIcon (LayersIcon)
- *   Export Data      → ArrowDownTrayIcon (DownloadIcon)
- */
-export const DEFAULT_SIDEBAR_SECTIONS: SidebarSection[] = [
-  {
-    items: [
-      {
-        key: 'overview',
-        label: 'Overview',
-        icon: ChartBarSquareIcon,
-        path: '#',
-      },
-    ],
-  },
-  {
-    label: 'Improvements',
-    items: [
-      { key: 'recommendations', label: 'Recommendations', icon: LightBulbIcon, path: '#' },
-      { key: 'implementations', label: 'Implementations', icon: ListBulletIcon, path: '#' },
-      { key: 'data-quality', label: 'Data Quality', icon: Menu2Icon, path: '#' },
-    ],
-  },
-  {
-    label: 'Analysis',
-    items: [
-      { key: 'adc-analysis', label: 'ADC Analysis', icon: DatabaseIcon, path: '#' },
-    ],
-  },
-  {
-    label: 'Other',
-    items: [
-      { key: 'custom-reports', label: 'Custom Reports', icon: MultipleFoldersIcon, path: '#' },
-      { key: 'export-data', label: 'Export Data', icon: ArrowDownTrayIcon, path: '#' },
-    ],
-  },
-];
+import { defaultSidebarSections } from './defaultSidebar';
 
 const meta: Meta<typeof Sidebar> = {
   title: 'UI/Sidebar',
@@ -84,7 +30,7 @@ type Story = StoryObj<typeof Sidebar>;
 
 export const Default: Story = {
   args: {
-    sections: DEFAULT_SIDEBAR_SECTIONS,
+    sections: defaultSidebarSections,
     activeKey: 'overview',
   },
   parameters: {
@@ -98,7 +44,7 @@ export const Default: Story = {
 
 export const NoActiveItem: Story = {
   args: {
-    sections: DEFAULT_SIDEBAR_SECTIONS,
+    sections: defaultSidebarSections,
   },
 };
 
@@ -107,7 +53,7 @@ export const ForceExpanded: Story = {
   id: 'force-expanded',
   name: 'Force expanded',
   args: {
-    sections: DEFAULT_SIDEBAR_SECTIONS,
+    sections: defaultSidebarSections,
     activeKey: 'overview',
     forceExpanded: true,
   },
