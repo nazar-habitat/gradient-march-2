@@ -43,7 +43,6 @@ const TIMEZONE_OPTIONS = [
   { value: 'Europe/London', label: 'GMT / London (UTC+00:00)' },
   { value: 'Europe/Paris', label: 'Central European Time (UTC+01:00)' },
   { value: DEFAULT_TIMEZONE, label: 'Eastern European Time (UTC+02:00)' },
-  { value: 'Europe/Moscow', label: 'Moscow (UTC+03:00)' },
   { value: 'Asia/Dubai', label: 'Gulf (UTC+04:00)' },
   { value: 'Asia/Karachi', label: 'Pakistan (UTC+05:00)' },
   { value: 'Asia/Dhaka', label: 'Bangladesh (UTC+06:00)' },
