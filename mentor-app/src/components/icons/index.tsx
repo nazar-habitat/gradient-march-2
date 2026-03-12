@@ -1,7 +1,30 @@
 /**
- * Central icon exports using Hero Icons (@heroicons/react).
- * Use outline icons by default for consistency with previous Ant Design outlined style.
+ * Central icon exports using Iconic Icons (@iconicicons/react).
+ * Re-exported with consistent names for app usage.
  */
+import {
+  SearchIcon as MagnifyingGlassIcon,
+  DownloadIcon as ArrowDownTrayIcon,
+  PlusIcon,
+  TrashIcon,
+  SettingsIcon as Cog6ToothIcon,
+  ChevronDownIcon,
+  HomeIcon,
+  StarIcon as LightBulbIcon,
+  ClipboardIcon as ListBulletIcon,
+  FolderIcon,
+  ServerIcon as CircleStackIcon,
+  FileTextIcon as DocumentTextIcon,
+  CloseIcon as XMarkIcon,
+  EyeIcon,
+  EyeOffIcon as EyeSlashIcon,
+  DashboardIcon as ChartBarSquareIcon,
+  TrendingUpIcon as ArrowTrendingUpIcon,
+  TableRowsIcon as TableCellsIcon,
+  PieChartIcon as DocumentChartBarIcon,
+  GridIcon as Square3Stack3DIcon,
+} from '@iconicicons/react';
+
 export {
   MagnifyingGlassIcon,
   ArrowDownTrayIcon,
@@ -23,4 +46,4 @@ export {
   TableCellsIcon,
   DocumentChartBarIcon,
   Square3Stack3DIcon,
-} from '@heroicons/react/24/outline';
+};
