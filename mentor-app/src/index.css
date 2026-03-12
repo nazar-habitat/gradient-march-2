@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700&display=swap')
 layer(base);
 
 @layer theme, base, antd, components, utilities;
@@ -616,6 +616,23 @@ layer(base);
   margin-right: 0;
   transition: width 0.2s ease, margin-right 0.2s ease;
   z-index: 10;
+
+  /* Logo: fixed 40×40 slot so icon stays same size on hover (no visual jump) */
+  .logo-icon-slot {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    overflow: hidden;
+  }
+  .logo-icon-slot img {
+    width: 40px;
+    height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    object-fit: contain;
+  }
+
   &:hover {
     width: 256px;
     margin-right: -160px; /* 256 - 96: expansion floats over content, layout stays 96px */
@@ -625,8 +642,10 @@ layer(base);
     .logo-f {
       @apply opacity-100;
     }
+    .sidebar-section-divider {
+      opacity: 0;
+    }
     .sidebar-section-label {
-      max-height: 2rem;
       opacity: 1;
     }
     .sidebar-nav-item .text-node {
@@ -643,11 +662,28 @@ layer(base);
       }
     }
   }
+  /* Section slot: fixed 24px height; constrained width when collapsed so content doesn't slide (Figma 12-2503) */
+  .sidebar-section-header {
+    @apply h-6 min-h-6 overflow-hidden;
+    width: 40px; /* match icon column when collapsed; constraint prevents slide */
+    max-width: 40px;
+    transition: none;
+  }
+  .sidebar-section-divider {
+    opacity: 1;
+    transition: none;
+  }
+  .sidebar-section-divider-line {
+    width: 24px; /* fixed 24px divider width */
+  }
   .sidebar-section-label {
-    max-height: 0;
-    overflow: hidden;
     opacity: 0;
-    transition: max-height 0.2s ease, opacity 0.15s ease;
+    transition: none;
+  }
+  &:hover .sidebar-section-header,
+  &.sidebar--expanded .sidebar-section-header {
+    width: 100%;
+    max-width: none;
   }
   .sidebar-nav-item {
     gap: 0; /* no gap when collapsed so icon column stays fixed width */
@@ -657,10 +693,44 @@ layer(base);
     overflow: hidden;
     opacity: 0;
     white-space: nowrap;
-    transition: max-width 0.2s ease, opacity 0.15s ease;
+    transition: none; /* instant hide on unhover so content does not slide back */
   }
   &:hover .sidebar-nav-item {
-    gap: 12px;
+    gap: 0;
+  }
+
+  /* Forced expanded state (e.g. Storybook) — same as :hover */
+  &.sidebar--expanded {
+    width: 256px;
+    margin-right: -160px;
+    .logo {
+      @apply opacity-0;
+    }
+    .logo-f {
+      @apply opacity-100;
+    }
+    .sidebar-section-divider {
+      opacity: 0;
+    }
+    .sidebar-section-label {
+      opacity: 1;
+    }
+    .sidebar-nav-item .text-node {
+      max-width: 160px;
+      opacity: 1;
+    }
+    a.sidebar-nav-item {
+      &.active,
+      &:hover {
+        .icon-wrapper,
+        .text-node {
+          @apply text-white;
+        }
+      }
+    }
+    .sidebar-nav-item {
+      gap: 0;
+    }
   }
 }
 

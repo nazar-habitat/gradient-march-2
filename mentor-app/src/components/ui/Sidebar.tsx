@@ -1,6 +1,5 @@
 import type React from 'react';
-import logoCollapsedUrl from '@/assets/logo-collapsed.svg';
-import logoExpandedUrl from '@/assets/logo-expanded.svg';
+import logoIconUrl from '@/assets/logo-collapsed.svg';
 
 /** Single nav item: key, label, icon, and optional path (defaults to #). */
 export interface SidebarNavItem {
@@ -27,6 +26,8 @@ export interface SidebarProps {
   logoExpanded?: React.ReactNode;
   /** Optional class for the sidebar wrapper. */
   className?: string;
+  /** When true, sidebar is always expanded (e.g. for Storybook). */
+  forceExpanded?: boolean;
 }
 
 const SIDEBAR_WIDTH_COLLAPSED = 96;
@@ -47,7 +48,7 @@ function SidebarMenuItem({
 }) {
   const Icon = item.icon;
   const base =
-    'sidebar-nav-item flex items-center h-10 w-full gap-3 rounded-[12px] transition-colors outline-none';
+    'sidebar-nav-item flex items-center h-10 w-full gap-[4px] rounded-[12px] transition-colors outline-none';
   const state = isActive
     ? 'bg-[var(--color-primary,#5452f5)] text-white'
     : 'text-neutral-400 hover:bg-neutral-900 hover:text-white';
@@ -78,48 +79,73 @@ export default function Sidebar({
   sections,
   activeKey,
   logoCollapsed = (
-    <img
-      src={logoCollapsedUrl}
-      alt=""
-      className="size-10 shrink-0 object-contain"
-    />
+    <span className="logo-icon-slot flex shrink-0 size-10 items-center justify-center">
+      <img
+        src={logoIconUrl}
+        alt=""
+        className="size-10 shrink-0 object-contain"
+      />
+    </span>
   ),
   logoExpanded = (
-    <img
-      src={logoExpandedUrl}
-      alt=""
-      className="h-10 w-full max-w-[200px] shrink-0 object-contain object-left"
-    />
+    <div className="flex flex-row items-center gap-0">
+      <span className="logo-icon-slot flex shrink-0 size-10 items-center justify-center">
+        <img
+          src={logoIconUrl}
+          alt=""
+          className="size-10 shrink-0 object-contain"
+        />
+      </span>
+      <span
+        className="shrink-0 text-white"
+        style={{
+          fontFamily: 'Poppins, sans-serif',
+          fontSize: 20,
+          fontWeight: 700,
+        }}
+      >
+        gradient
+      </span>
+    </div>
   ),
   className,
+  forceExpanded,
 }: SidebarProps) {
   const safeSections = sections ?? [];
 
   return (
     <aside
-      className={`sidebar flex flex-col shrink-0 overflow-hidden border-r border-neutral-900 bg-black ${className ?? ''}`.trim()}
+      className={`sidebar flex flex-col shrink-0 overflow-hidden border-r border-neutral-900 bg-black ${forceExpanded ? 'sidebar--expanded' : ''} ${className ?? ''}`.trim()}
       style={{ minHeight: '100vh' }}
     >
       <div className="flex flex-col h-full py-5 px-7 min-w-0">
-        {/* Logo: .logo by default, .logo-f on hover (index.css) */}
-        <div className="flex items-center justify-center h-10 w-full shrink-0 mb-5 relative min-h-10">
-          <div className="logo absolute inset-0 flex items-center justify-center opacity-100 transition-opacity duration-150">
+        {/* Logo: .logo by default, .logo-f on hover (index.css); no transition on logo to avoid jump */}
+        <div className="flex items-center justify-start h-10 w-full shrink-0 mb-5 relative min-h-10">
+          <div className="logo absolute inset-0 flex items-center justify-start opacity-100">
             {logoCollapsed}
           </div>
-          <div className="logo-f absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-150">
+          <div className="logo-f absolute inset-0 flex items-center justify-start opacity-0">
             {logoExpanded}
           </div>
         </div>
 
-        {/* Nav: 40px icon column (fixed); labels/section titles reveal on .sidebar:hover */}
+        {/* Nav: 40px icon column (fixed); section slot is 24px — divider when collapsed, label when expanded (Figma 12-2503). */}
         <nav className="flex flex-1 flex-col gap-5 w-full min-w-0">
           {safeSections.map((section, sectionIndex) => (
             <div key={sectionIndex} className="flex flex-col gap-2 w-full min-w-0">
               {section.label && (
-                <div className="sidebar-section-label py-1">
-                  <p className="text-xs font-semibold leading-4 text-neutral-600">
-                    {section.label}
-                  </p>
+                <div className="sidebar-section-header relative h-6 min-h-6 w-full shrink-0 overflow-hidden">
+                  <div
+                    className="sidebar-section-divider absolute inset-0 flex items-center justify-center"
+                    aria-hidden
+                  >
+                    <span className="sidebar-section-divider-line h-px w-6 shrink-0 bg-neutral-800" />
+                  </div>
+                  <div className="sidebar-section-label absolute inset-0 flex items-center py-1 min-w-0">
+                    <p className="text-xs font-semibold leading-4 text-neutral-600 truncate min-w-0">
+                      {section.label}
+                    </p>
+                  </div>
                 </div>
               )}
               {(section.items ?? []).map((item) => {

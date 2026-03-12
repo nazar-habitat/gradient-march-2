@@ -3,9 +3,9 @@ import {
   ChartBarSquareIcon,
   LightBulbIcon,
   ListBulletIcon,
-  TableCellsIcon,
-  DocumentChartBarIcon,
-  Square3Stack3DIcon,
+  Menu2Icon,
+  DatabaseIcon,
+  MultipleFoldersIcon,
   ArrowDownTrayIcon,
 } from '@/components/icons';
 import Sidebar, {
@@ -18,11 +18,11 @@ import Sidebar, {
  * Default nav sections — Figma Gradient Design System.
  * Icons (from @iconicicons/react, aliased in @/components/icons):
  *   Overview         → ChartBarSquareIcon (DashboardIcon)
- *   Recommendations  → LightBulbIcon (StarIcon)
+ *   Recommendations  → LightBulbIcon (SunIcon / bulb)
  *   Implementations  → ListBulletIcon (ClipboardIcon)
- *   Data Quality     → TableCellsIcon (TableRowsIcon)
- *   ADC Analysis     → DocumentChartBarIcon (PieChartIcon)
- *   Custom Reports   → Square3Stack3DIcon (GridIcon)
+ *   Data Quality     → Menu2Icon (MenuIcon)
+ *   ADC Analysis     → DatabaseIcon (ServerIcon)
+ *   Custom Reports   → MultipleFoldersIcon (LayersIcon)
  *   Export Data      → ArrowDownTrayIcon (DownloadIcon)
  */
 export const DEFAULT_SIDEBAR_SECTIONS: SidebarSection[] = [
@@ -41,19 +41,19 @@ export const DEFAULT_SIDEBAR_SECTIONS: SidebarSection[] = [
     items: [
       { key: 'recommendations', label: 'Recommendations', icon: LightBulbIcon, path: '#' },
       { key: 'implementations', label: 'Implementations', icon: ListBulletIcon, path: '#' },
-      { key: 'data-quality', label: 'Data Quality', icon: TableCellsIcon, path: '#' },
+      { key: 'data-quality', label: 'Data Quality', icon: Menu2Icon, path: '#' },
     ],
   },
   {
     label: 'Analysis',
     items: [
-      { key: 'adc-analysis', label: 'ADC Analysis', icon: DocumentChartBarIcon, path: '#' },
+      { key: 'adc-analysis', label: 'ADC Analysis', icon: DatabaseIcon, path: '#' },
     ],
   },
   {
     label: 'Other',
     items: [
-      { key: 'custom-reports', label: 'Custom Reports', icon: Square3Stack3DIcon, path: '#' },
+      { key: 'custom-reports', label: 'Custom Reports', icon: MultipleFoldersIcon, path: '#' },
       { key: 'export-data', label: 'Export Data', icon: ArrowDownTrayIcon, path: '#' },
     ],
   },
@@ -61,6 +61,7 @@ export const DEFAULT_SIDEBAR_SECTIONS: SidebarSection[] = [
 
 const meta: Meta<typeof Sidebar> = {
   title: 'UI/Sidebar',
+  id: 'ui-sidebar',
   component: Sidebar,
   parameters: {
     layout: 'fullscreen',
@@ -98,5 +99,23 @@ export const Default: Story = {
 export const NoActiveItem: Story = {
   args: {
     sections: DEFAULT_SIDEBAR_SECTIONS,
+  },
+};
+
+/** Sidebar forced to expanded state (256px) without hover. Story id: ui-sidebar--force-expanded */
+export const ForceExpanded: Story = {
+  id: 'force-expanded',
+  name: 'Force expanded',
+  args: {
+    sections: DEFAULT_SIDEBAR_SECTIONS,
+    activeKey: 'overview',
+    forceExpanded: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Sidebar forced to expanded state (256px) without hover. Useful for reviewing full logo and labels.',
+      },
+    },
   },
 };
