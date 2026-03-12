@@ -143,6 +143,7 @@ layer(base);
   }
 }
 
+
 @utility btn-primary {
   @layer components {
     @apply text-white bg-purple-500 hover:bg-purple-600 active:bg-purple-700 focus:outline-purple-500 focus:outline focus:outline-offset-2 disabled:bg-neutral-800 disabled:text-neutral-600;

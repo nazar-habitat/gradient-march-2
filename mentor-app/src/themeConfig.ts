@@ -40,6 +40,10 @@ const themeConfig: ThemeConfig = {
     colorBorder: '#313131', // Figma: Neutral/800
     colorBorderSecondary: '#4a4a4a', // Figma: Neutral/700
 
+    // ─── Input / Field (Figma Inputs — node 1833-108316) ───
+    colorTextPlaceholder: '#636363', // Figma: Foreground/fg-disabled
+    colorTextDisabled: '#313131', // Figma: Foreground/fg-disabled-low (disabled placeholder)
+
     // Primary variants (Figma Purple/600, /700)
     colorPrimaryHover: '#4341f1',
     colorPrimaryActive: '#3735bb',
@@ -322,12 +326,67 @@ const themeConfig: ThemeConfig = {
   // ─── Component-Level Token Overrides ───
   // Override tokens for specific components without affecting others.
   // See: https://ant.design/docs/react/customize-theme#component-token
+  // Component tokens override only that component (e.g. Button heights don't affect Input).
   components: {
     Button: {
-      // Figma Gradient DS — Buttons/Button S, M, L (node 4203-36010)
-      contentFontSizeSM: 13, // Button S: 13px, line height 16
-      contentFontSize: 14, // Button M: 14px, line height 20
-      contentFontSizeLG: 16, // Button L: 16px, line height 24 (Semi-bold in Figma)
+      // Figma Gradient DS — Size section (node 4206-255475): Large 48px, Medium 40px, Small 32px.
+      // Heights
+      controlHeightSM: 32, // Small: 32px
+      controlHeight: 40, // Medium: 40px
+      controlHeightLG: 48, // Large: 48px
+      // Font (Buttons/Button S, M, L)
+      contentFontSizeSM: 13,
+      contentFontSize: 14,
+      contentFontSizeLG: 16,
+      contentLineHeightSM: 16,
+      contentLineHeight: 20,
+      contentLineHeightLG: 24,
+      // Horizontal padding (side paddings)
+      paddingInlineSM: 12, // Small: 12px
+      paddingInline: 16, // Medium: 16px
+      paddingInlineLG: 24, // Large: 24px
+      // Vertical padding (derived to hit target height with content line height)
+      paddingBlockSM: 8,
+      paddingBlock: 10,
+      paddingBlockLG: 12,
+      // Icon ↔ text gap. Figma: Small 6px, Medium 8px, Large 10px. Single token = 8 (medium).
+      iconGap: 8,
+      // Border radius: Ant Button has no per-size borderRadius token; we use 12 for default (medium).
+      // For 10/12/16 per size, Button wrapper applies borderRadius by size (see Button.tsx).
+      borderRadius: 12,
+      // Remove default box-shadow on buttons (Figma has none)
+      defaultShadow: 'none',
+      primaryShadow: 'none',
+      dangerShadow: 'none',
+    },
+    // ─── Input (Figma Gradient DS — Inputs node 1833-108316: 3 sizes, layouts, 5 states) ───
+    Input: {
+      // Background (Figma Background/bg-tertiary)
+      colorBgContainer: '#191919',
+      // Sizes (without label): Small 32px, Medium 40px, Large 48px (same as Button)
+      controlHeightSM: 32,
+      controlHeight: 40,
+      controlHeightLG: 48,
+      // Padding: Small px 10 / py 6, Medium px 12 / py 8, Large px 16 / py 12
+      paddingInlineSM: 10,
+      paddingInline: 12,
+      paddingInlineLG: 16,
+      paddingBlockSM: 6,
+      paddingBlock: 8,
+      paddingBlockLG: 12,
+      // Typography: Small 13px, Medium 14px, Large 16px
+      inputFontSizeSM: 13,
+      inputFontSize: 14,
+      inputFontSizeLG: 16,
+      // Border radius: per-size 10/12/16 applied in Input.tsx (like Button)
+      borderRadius: 12,
+      // States: default border already from global colorBorder (outline-primary)
+      hoverBorderColor: '#4a4a4a', // Figma: Outline/outline-secondary (hover)
+      activeBorderColor: '#949494', // Figma: Outline/outline-tertiary (active/focus)
+      activeShadow: 'none', // Figma uses border-only focus, no glow
+      errorActiveShadow: 'none',
+      // Error state (Figma Outline/outline-error, Foreground/fg-error)
+      colorError: '#fa7054',
     },
     // Table: { colorBgContainer: '#0a0a0a', borderRadius: 16 },
     // Drawer: { colorBgElevated: '#141414' },

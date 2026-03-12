@@ -121,6 +121,64 @@ These are defined in `index.css` `@theme`. Use them in custom CSS (`font-weight:
 
 ---
 
+## 4.1 Button sizes (Figma Size section)
+
+From the [Figma Size section](https://www.figma.com/design/5wOpXaZXPW8r0y21pvcovS/%E2%9A%99%EF%B8%8F--Gradient-Design-System?node-id=4206-255475) (node `4206-255475`). Figma: **Large, Medium, Small** → our `large`, `medium`, `small`.
+
+| Our size | Figma  | Height | Side padding | Icon gap | Radius |
+|----------|--------|--------|---------------|----------|--------|
+| `small`  | Small  | 32px   | 12px          | 6px      | 10px   |
+| `medium` | Medium | 40px   | 16px          | 8px      | 12px   |
+| `large`  | Large  | 48px   | 24px          | 10px     | 16px   |
+
+**Tokens in `themeConfig.components.Button`:**
+
+| Token | Small | Medium | Large |
+|-------|-------|--------|-------|
+| `controlHeight*` | 32 | 40 | 48 |
+| `paddingInline*` | 12 | 16 | 24 |
+| `paddingBlock*` | 8 | 10 | 12 |
+| `contentFontSize*` / `contentLineHeight*` | 13/16 | 14/20 | 16/24 |
+| `iconGap` | — | 8 (single token) | — |
+| Border radius | 10 | 12 | 16 |
+
+- **Border radius:** Ant has no per-size radius token; our `Button` wrapper applies 10/12/16 by size (see `Button.tsx`).
+- **Icon gap:** Ant has one `iconGap` (we use 8 for medium). For 6/10 on small/large you’d need CSS or a custom wrapper.
+
+**Box-shadow:** Ant Design’s primary/default/danger buttons use component tokens `primaryShadow`, `defaultShadow`, `dangerShadow`. We set them to `'none'` in `components.Button` to match Figma (no shadow). If a shadow reappears, check that `themeConfig.components.Button` includes `defaultShadow: 'none'`, `primaryShadow: 'none'`, `dangerShadow: 'none'`.
+
+---
+
+## 4.2 Input / Field (Figma Inputs)
+
+From the [Figma Inputs page](https://www.figma.com/design/5wOpXaZXPW8r0y21pvcovS/%E2%9A%99%EF%B8%8F--Gradient-Design-System?node-id=1833-108316) (node `1833-108316`). **2 sizes** (Medium, Small), **layouts** (text only, leading icon, trailing icon, both icons, no label), **5 states** (default, filled, hover, active, disabled, error).
+
+**Global tokens** (in `themeConfig.token`) used by inputs:
+
+| Token | Figma variable | Value |
+|-------|----------------|--------|
+| `colorTextPlaceholder` | Foreground/fg-disabled | `#636363` |
+| `colorTextDisabled` | Foreground/fg-disabled-low | `#313131` |
+
+**Component tokens** in `themeConfig.components.Input`:
+
+| Token | Figma / usage | Value |
+|-------|----------------|--------|
+| `colorBgContainer` | Background/bg-tertiary | `#191919` |
+| `controlHeight` / `controlHeightSM` | Medium / Small height | 40 / 32 |
+| `paddingInline` / `paddingInlineSM` | Medium / Small horizontal | 12 / 10 |
+| `paddingBlock` / `paddingBlockSM` | Medium / Small vertical | 8 / 6 |
+| `inputFontSize` / `inputFontSizeSM` | Body/M, Body/S | 14 / 13 |
+| `borderRadius` | x1.5 (Medium); Small uses 8 in Figma | 12 |
+| `hoverBorderColor` | Outline/outline-secondary | `#4a4a4a` |
+| `activeBorderColor` | Outline/outline-tertiary | `#949494` |
+| `activeShadow` / `errorActiveShadow` | Figma uses border-only focus | `'none'` |
+| `colorError` | Outline/outline-error, Foreground/fg-error | `#fa7054` |
+
+**State summary:** Default border uses global `colorBorder` (outline-primary `#313131`). Hover → outline-secondary; active/focus → outline-tertiary; error → outline-error. Disabled placeholder uses fg-disabled-low; disabled filled uses fg-disabled. To customize inputs, change only these tokens (and optional wrapper for Small border radius 8px or label/helper styles).
+
+---
+
 ## 5. Figma variables snapshot (for reference)
 
 Pulled from the Gradient Design System (node 3810-10932). Use these to fill the mapping in §2 and §4 or to create/update Figma variables to match dev.
@@ -142,12 +200,20 @@ Pulled from the Gradient Design System (node 3810-10932). Use these to fill the 
 | Red/600 | `#e53e1c` |
 | Body/L Medium | Inter, 16px, weight 500, line height 24 |
 | Spacing (x2, x2,5, x3, x10) | 16, 20, 24, 80 |
+| Foreground/fg-disabled | `#636363` |
+| Foreground/fg-disabled-low | `#313131` |
+| Background/bg-tertiary | `#191919` |
+| Outline/outline-primary | `#313131` |
+| Outline/outline-secondary | `#4a4a4a` |
+| Outline/outline-tertiary | `#949494` |
+| Outline/outline-error, Foreground/fg-error | `#fa7054` |
+| Spacing (x1, x1.25, x0.75, x1.5) | 8, 10, 6, 12 |
 
 ---
 
 ## 6. Quick checklist
 
-- [ ] In dev: set seed tokens in `themeConfig.ts` (or in `theme/tokens.ts` + `antd-theme.ts`) from the tables in §2 and §4.
+- [ ] In dev: set seed tokens in `themeConfig.ts` (or in `theme/tokens.ts` + `antd-theme.ts`) from the tables in §2, §4, and §4.2 (Input).
 - [ ] In Figma: create or rename variables to match semantic roles (Primary, Bg base, Bg container, Text primary/secondary, Border).
 - [ ] In Figma: set those variables to the same hex/values as in dev; document in a “Design tokens” page or doc.
 - [ ] In Figma: name text styles to match §4 (Body/L Medium, Body/M, Heading/1…5) and use the same font, size, line height, weight as in the typography table.

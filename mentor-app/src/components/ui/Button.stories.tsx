@@ -22,11 +22,11 @@ const meta: Meta<typeof Button> = {
     },
     colorScheme: {
       control: 'select',
-      options: [undefined, 'neutral', 'danger', 'warning', 'success'],
+      options: [undefined, 'accent', 'neutral', 'danger', 'warning', 'success'],
     },
     size: {
       control: 'select',
-      options: ['small', 'middle', 'large'],
+      options: ['small', 'medium', 'large'],
     },
     iconPosition: {
       control: 'select',
@@ -49,7 +49,7 @@ export const Playground: Story = {
   args: {
     variant: 'solid',
     children: 'Button',
-    size: 'middle',
+    size: 'medium',
     icon: <SearchOutlined />,
     iconPosition: 'start',
     disabled: false,
@@ -87,7 +87,7 @@ export const Sizes: Story = {
         <div key={variant} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           <span style={{ width: 72, fontSize: 12, opacity: 0.5 }}>{variant}</span>
           <Button variant={variant} size="small">Small</Button>
-          <Button variant={variant} size="middle">Middle</Button>
+          <Button variant={variant} size="medium">Medium</Button>
           <Button variant={variant} size="large">Large</Button>
         </div>
       ))}
@@ -148,16 +148,16 @@ export const Colors: Story = {
   name: 'Colors',
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      {/* Primary (default – no colorScheme) */}
+      {/* Default: accent for solid/filled/text, neutral for outlined/link */}
       <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-        <span style={{ width: 72, fontSize: 12, opacity: 0.5 }}>primary</span>
+        <span style={{ width: 72, fontSize: 12, opacity: 0.5 }}>default</span>
         <Button variant="solid">Solid</Button>
         <Button variant="outlined">Outlined</Button>
         <Button variant="filled">Filled</Button>
         <Button variant="text">Text</Button>
         <Button variant="link">Link</Button>
       </div>
-      {(['neutral', 'danger', 'warning', 'success'] as const).map((colorScheme) => (
+      {(['accent', 'neutral', 'danger', 'warning', 'success'] as const).map((colorScheme) => (
         <div key={colorScheme} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           <span style={{ width: 72, fontSize: 12, opacity: 0.5 }}>{colorScheme}</span>
           <Button colorScheme={colorScheme} variant="solid">Solid</Button>
@@ -213,78 +213,6 @@ export const Icons: Story = {
           <Button variant="outlined" icon={<SearchOutlined />}>Gap 16px</Button>
         </div>
       </ConfigProvider>
-    </div>
-  ),
-};
-
-// ---------------------------------------------------------------------------
-// Tailwind utilities from index.css (@utility btn, btn-primary, icon-btn, etc.)
-// Use these classes when you need raw markup (e.g. non-Antd) aligned with the design system.
-// ---------------------------------------------------------------------------
-
-export const TailwindUtilities: Story = {
-  name: 'Tailwind utilities (index.css)',
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Custom utilities from `src/index.css` (@utility). Use with native elements when not using the design-system Button/IconButton.',
-      },
-    },
-  },
-  render: () => (
-    <div className="flex flex-col gap-6 p-4">
-      <section className="flex flex-col gap-2">
-        <span className="text-xs text-neutral-400">Buttons (btn + variant + size)</span>
-        <div className="flex flex-wrap gap-2 items-center">
-          <button type="button" className="btn btn-primary">
-            Primary
-          </button>
-          <button type="button" className="btn btn-secondary">
-            Secondary
-          </button>
-          <button type="button" className="btn btn-text">
-            Text
-          </button>
-          <button type="button" className="btn btn-primary btn-small">
-            Primary small
-          </button>
-          <button type="button" className="btn btn-primary btn-medium" disabled>
-            Disabled
-          </button>
-        </div>
-      </section>
-      <section className="flex flex-col gap-2">
-        <span className="text-xs text-neutral-400">Icon buttons (icon-btn + variant + size)</span>
-        <div className="flex flex-wrap gap-2 items-center">
-          <button type="button" className="icon-btn icon-btn-primary" aria-label="Primary">
-            <SearchOutlined />
-          </button>
-          <button type="button" className="icon-btn icon-btn-secondary" aria-label="Secondary">
-            <SearchOutlined />
-          </button>
-          <button type="button" className="icon-btn icon-btn-text" aria-label="Text">
-            <SearchOutlined />
-          </button>
-          <button type="button" className="icon-btn icon-btn-primary icon-btn-small" aria-label="Small">
-            <SearchOutlined />
-          </button>
-        </div>
-      </section>
-      <section className="flex flex-col gap-2">
-        <span className="text-xs text-neutral-400">Toggle group (toggle-btn-group-* + toggle-btn + size)</span>
-        <div className="toggle-btn-group-md">
-          <button type="button" className="toggle-btn toggle-btn-medium">
-            Option A
-          </button>
-          <button type="button" className="toggle-btn toggle-btn-medium">
-            Option B
-          </button>
-          <button type="button" className="toggle-btn toggle-btn-medium">
-            Option C
-          </button>
-        </div>
-      </section>
     </div>
   ),
 };
