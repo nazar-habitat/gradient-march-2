@@ -143,10 +143,12 @@ function LocalizationTabContent() {
 /** Settings page content (header + tabs). Sidebar is provided by the root layout when using TanStack Router. */
 export default function SettingsPage() {
   return (
-    <Layout className="flex-1 flex flex-col min-h-screen bg-black"> 
+    <Layout className="flex-1 flex flex-col min-h-screen">
       <SettingsHeader />
-      <Content className="bg-black border border-neutral-800 border-b-0 rounded-t-3xl pt-10 px-10 pb-8">
-        <Tabs
+      {/* Wrapper matches header grey so rounded Content corners don’t show black triangles */}
+      <div className="flex-1 flex flex-col min-h-0 bg-neutral-900">
+        <Content className="bg-black border border-neutral-800 border-b-0 rounded-t-3xl pt-10 px-10 pb-8">
+          <Tabs
           variant="settings"
           tabBarGutter={24}
           defaultActiveKey="localization"
@@ -163,7 +165,8 @@ export default function SettingsPage() {
               ),
           }))}
         />
-      </Content>
+        </Content>
+      </div>
     </Layout>
   );
 }
