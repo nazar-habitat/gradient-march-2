@@ -18,4 +18,9 @@ export {
   XMarkIcon,
   EyeIcon,
   EyeSlashIcon,
+  ChartBarSquareIcon,
+  ArrowTrendingUpIcon,
+  TableCellsIcon,
+  DocumentChartBarIcon,
+  Square3Stack3DIcon,
 } from '@heroicons/react/24/outline';

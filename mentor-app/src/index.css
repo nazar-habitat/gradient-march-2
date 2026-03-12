@@ -49,6 +49,10 @@ layer(base);
   --color-neutral-900: #191919;
   --color-neutral-950: #141414;
 
+  /* Sidebar (Figma node 12-2503): collapsed 96px, expanded 256px */
+  --sidebar-width-collapsed: 96px;
+  --sidebar-width-expanded: 256px;
+
   --color-purple-50: #f6f6fe;
   --color-purple-100: #ededfe;
   --color-purple-200: #d5d4fc;
@@ -267,7 +271,8 @@ layer(base);
   }
 
   .Charts {
-    margin-left: 250px; /* Should match the sidebar's width */
+    /* Sidebar is collapsed by default and expands on hover; reserve collapsed width so expand overlays. */
+    margin-left: var(--sidebar-width-collapsed, 96px);
     padding: 20px;
     overflow-x: auto; /* Enable horizontal scrolling */
   }
@@ -605,15 +610,27 @@ layer(base);
 }
 
 
+/* Sidebar: collapsed by default (96px), expands on hover (256px). Icons stay fixed. */
 .sidebar {
+  width: 96px;
+  transition: width 0.2s ease;
   &:hover {
+    width: 256px;
     .logo {
       @apply opacity-0;
     }
     .logo-f {
       @apply opacity-100;
     }
-    a {
+    .sidebar-section-label {
+      max-height: 2rem;
+      opacity: 1;
+    }
+    .sidebar-nav-item .text-node {
+      max-width: 160px;
+      opacity: 1;
+    }
+    a.sidebar-nav-item {
       &.active,
       &:hover {
         .icon-wrapper,
@@ -621,10 +638,26 @@ layer(base);
           @apply text-white;
         }
       }
-      .text-node {
-        display: block;
-      }
     }
+  }
+  .sidebar-section-label {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.2s ease, opacity 0.15s ease;
+  }
+  .sidebar-nav-item {
+    gap: 0; /* no gap when collapsed so icon column stays fixed width */
+  }
+  .sidebar-nav-item .text-node {
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    white-space: nowrap;
+    transition: max-width 0.2s ease, opacity 0.15s ease;
+  }
+  &:hover .sidebar-nav-item {
+    gap: 12px;
   }
 }
 
