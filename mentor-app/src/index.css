@@ -839,6 +839,14 @@ layer(base);
 
 .ant-btn-icon{display: flex;}
 
+/* Disabled solid/filled buttons: no border (match default state; Ant adds border in disabled state) */
+.ant-btn.ant-btn-variant-solid:disabled,
+.ant-btn.ant-btn-variant-filled:disabled,
+.ant-btn.ant-btn-variant-solid.ant-btn-disabled,
+.ant-btn.ant-btn-variant-filled.ant-btn-disabled {
+  border: none !important;
+}
+
 /* Print styles for headers and page breaks */
 .print-header {
   position: running(header);
