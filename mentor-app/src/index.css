@@ -1030,3 +1030,48 @@ layer(base);
     padding: 0 20px;
   } */
 }
+
+/* ─── Design tokens (Figma Gradient DS) — semantic layer; keep in sync with theme/tokens.ts ─── */
+:root {
+  /* Brand */
+  --ds-color-primary: var(--color-purple-500);
+  --ds-color-primary-hover: var(--color-purple-600);
+  --ds-color-primary-active: var(--color-purple-700);
+  /* Backgrounds */
+  --ds-color-bg-base: var(--color-black);
+  --ds-color-bg-container: var(--color-neutral-950);
+  --ds-color-bg-elevated: var(--color-neutral-900);
+  /* Text */
+  --ds-color-text: rgba(255, 255, 255, 0.9);
+  --ds-color-text-secondary: var(--color-neutral-100);
+  --ds-color-text-tertiary: var(--color-neutral-400);
+  --ds-color-text-disabled: var(--color-neutral-800);
+  --ds-color-text-placeholder: var(--color-neutral-600);
+  /* Border */
+  --ds-color-border: var(--color-neutral-800);
+  --ds-color-border-secondary: var(--color-neutral-700);
+  /* State */
+  --ds-color-success: var(--color-green-500);
+  --ds-color-warning: var(--color-orange-500);
+  --ds-color-error: var(--color-red-600);
+  --ds-color-info: var(--color-purple-500);
+  /* Typography */
+  --ds-font-family: var(--font-sans);
+  --ds-font-size: 14px;
+  --ds-font-size-sm: var(--font-size-sm);
+  --ds-font-size-lg: var(--font-size-base);
+  --ds-line-height: 1.43;
+  --ds-font-weight-strong: var(--font-weight-semibold);
+  /* Shape */
+  --ds-border-radius: 8px;
+  --ds-border-radius-lg: 12px;
+  /* Component: input/select elevated bg, borders, tabs */
+  --ds-input-bg: var(--color-neutral-900);
+  --ds-input-hover-border: var(--color-neutral-700);
+  --ds-input-active-border: var(--color-neutral-400);
+  --ds-input-error: var(--color-red-500);
+  --ds-tabs-item: var(--color-neutral-400);
+  --ds-tabs-item-selected: var(--color-white);
+  --ds-tabs-item-hover: var(--color-neutral-200);
+  --ds-tabs-ink: var(--color-purple-500);
+}
