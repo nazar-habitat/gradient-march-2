@@ -26,6 +26,9 @@ import {
   GridIcon as Square3Stack3DIcon,
   MenuIcon as Menu2Icon,
   LayersIcon as MultipleFoldersIcon,
+  AnnouncementIcon,
+  CodeIcon,
+  ChartIcon,
 } from '@iconicicons/react';
 
 export {
@@ -52,4 +55,7 @@ export {
   Square3Stack3DIcon,
   Menu2Icon,
   MultipleFoldersIcon,
+  AnnouncementIcon,
+  CodeIcon,
+  ChartIcon,
 };
