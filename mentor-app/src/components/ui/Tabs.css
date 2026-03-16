@@ -1,8 +1,13 @@
 /* Card (pill) tab type — overrides Ant's line rendering to produce pill-shaped tabs.
    Line type is handled entirely by themeConfig tokens; no CSS needed. */
 
-.g-tabs-card.ant-tabs .ant-tabs-nav::before {
-  border-color: transparent;
+.ant-tabs .ant-tabs-nav::before {
+  border-color: var(--ds-color-border);
+}
+
+
+.g-tabs-card.ant-tabs .ant-tabs-nav {
+  padding-bottom: 16px;
 }
 
 .g-tabs-card.ant-tabs .ant-tabs-ink-bar {
