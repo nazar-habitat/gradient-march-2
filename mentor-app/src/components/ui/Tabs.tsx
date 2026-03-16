@@ -1,30 +1,48 @@
 import { Tabs as AntTabs } from 'antd';
 import type { TabsProps as AntTabsProps } from 'antd';
+import './Tabs.css';
 
-export type TabsVariant = 'default' | 'settings' | 'pill' | 'chiller';
+export type TabType = 'line' | 'card';
+export type TabSize = 'small' | 'medium' | 'large';
 
-export interface TabsProps extends AntTabsProps {
-  /**
-   * Visual variant. Use "settings" for settings-page style (customise via .settings-tabs in CSS).
-   * "pill" / "chiller" map to existing CSS classes.
-   */
-  variant?: TabsVariant;
+export interface TabsProps extends Omit<AntTabsProps, 'type' | 'size'> {
+  /** Visual style. `line` shows an underline indicator; `card` renders pill-shaped tabs with a filled background. @default 'line' */
+  type?: TabType;
+  /** Controls font-size and padding. @default 'medium' */
+  size?: TabSize;
 }
 
-const VARIANT_CLASS: Record<TabsVariant, string> = {
-  default: '',
-  settings: 'settings-tabs',
-  pill: 'pill-tabs',
-  chiller: 'chiller-tabs',
+const ANT_SIZE_MAP = {
+  small: 'small',
+  medium: 'middle',
+  large: 'large',
+} as const;
+
+const CARD_SIZE_CLASS: Record<TabSize, string> = {
+  small: 'g-tabs-card--sm',
+  medium: 'g-tabs-card--md',
+  large: 'g-tabs-card--lg',
 };
 
-/** Tabs wrapper — forwards to antd Tabs, applies variant className for customisation. */
 export default function Tabs({
-  variant = 'default',
+  type = 'line',
+  size = 'medium',
   className,
   ...rest
 }: TabsProps) {
-  const variantClass = VARIANT_CLASS[variant];
-  const resolvedClassName = [variantClass, className].filter(Boolean).join(' ') || undefined;
-  return <AntTabs className={resolvedClassName} {...rest} />;
+  if (type === 'card') {
+    const cls = ['g-tabs-card', CARD_SIZE_CLASS[size], className]
+      .filter(Boolean)
+      .join(' ');
+    return <AntTabs type="line" className={cls} {...rest} />;
+  }
+
+  return (
+    <AntTabs
+      type="line"
+      size={ANT_SIZE_MAP[size]}
+      className={className}
+      {...rest}
+    />
+  );
 }
