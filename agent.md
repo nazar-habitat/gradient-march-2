@@ -30,6 +30,7 @@ This folder is a **design-team package** — a self-contained kit that gives des
 | `design-team-package/mock-data/README.md` | Explains the mock-data folder; currently empty — files are added per feature on request. |
 | `design-team-package/handoff-and-integration.md` | What designers deliver (Figma + route names, data-field annotations, component names) and how engineering maps designs to the codebase. |
 | `index.css` | Production Tailwind v4 stylesheet. |
+| `mentor-app/src/index.css` | **Do not modify** — this file is used by the production app; removing or rewriting rules here can cause production regressions. Build new styles via theming, component-level CSS, or additional files instead. |
 
 ## Core features of the app
 
@@ -52,6 +53,7 @@ Styling is handled via **Ant Design v5's ConfigProvider token system** — not s
 - **Nested `ConfigProvider`** can apply local theme overrides to specific sections of the UI.
 - **`useToken` hook** is used when custom components need to consume the current theme tokens.
 - Refer to `index.css` for any Tailwind-level overrides that sit alongside the token system.
+  - When updating or experimenting with styling, do not edit `mentor-app/src/index.css`; instead, prefer ConfigProvider tokens, component-scoped styles, or new CSS files so production styles remain stable.
 
 When building or adjusting the theme, define tokens in the ConfigProvider config — do not write raw color values or spacing in component CSS.
 

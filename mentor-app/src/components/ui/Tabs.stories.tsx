@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ConfigProvider } from 'antd';
 import themeConfig from '../../themeConfig';
 import Tabs from './Tabs';
+import type { TabType, TabSize } from './Tabs';
 
 const tabItems = [
   { key: 'tab1', label: 'Tab 1', children: 'Content of Tab 1' },
@@ -21,17 +22,13 @@ const meta: Meta<typeof Tabs> = {
   ],
   tags: ['autodocs'],
   argTypes: {
-    variant: {
-      control: 'select',
-      options: ['default', 'settings', 'pill', 'chiller'],
-    },
     type: {
       control: 'select',
-      options: ['line', 'card', 'editable-card'],
+      options: ['line', 'card'],
     },
     size: {
       control: 'select',
-      options: ['small', 'middle', 'large'],
+      options: ['small', 'medium', 'large'],
     },
   },
 };
@@ -41,54 +38,42 @@ type Story = StoryObj<typeof Tabs>;
 
 export const Playground: Story = {
   args: {
-    variant: 'default',
+    type: 'line',
+    size: 'medium',
     defaultActiveKey: 'tab1',
     items: tabItems,
   },
 };
 
-export const Default: Story = {
-  args: {
-    defaultActiveKey: 'tab1',
-    items: tabItems,
-  },
+export const Types: Story = {
+  name: 'Types',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+      {(['line', 'card'] as TabType[]).map((type) => (
+        <div key={type}>
+          <span style={{ fontSize: 12, opacity: 0.5, marginBottom: 8, display: 'block' }}>{type}</span>
+          <Tabs type={type} defaultActiveKey="tab1" items={tabItems} />
+        </div>
+      ))}
+    </div>
+  ),
 };
 
-export const SettingsVariant: Story = {
-  name: 'Variant: settings',
-  args: {
-    variant: 'settings',
-    defaultActiveKey: 'tab1',
-    items: tabItems.map((t) => ({
-      ...t,
-      label: <span className="text-[13px] font-medium leading-4">{t.label}</span>,
-    })),
-  },
-};
-
-export const PillVariant: Story = {
-  name: 'Variant: pill',
-  args: {
-    variant: 'pill',
-    defaultActiveKey: 'tab1',
-    items: tabItems,
-  },
-};
-
-export const ChillerVariant: Story = {
-  name: 'Variant: chiller',
-  args: {
-    variant: 'chiller',
-    defaultActiveKey: 'tab1',
-    items: tabItems,
-  },
-};
-
-export const CardTabs: Story = {
-  name: 'Type: card',
-  args: {
-    type: 'card',
-    defaultActiveKey: 'tab1',
-    items: tabItems,
-  },
+export const Sizes: Story = {
+  name: 'Sizes',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+      {(['line', 'card'] as TabType[]).map((type) => (
+        <div key={type} style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <span style={{ fontSize: 14, fontWeight: 500 }}>{type}</span>
+          {(['small', 'medium', 'large'] as TabSize[]).map((size) => (
+            <div key={size}>
+              <span style={{ fontSize: 12, opacity: 0.5, marginBottom: 8, display: 'block' }}>{size}</span>
+              <Tabs type={type} size={size} defaultActiveKey="tab1" items={tabItems} />
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  ),
 };

@@ -91,8 +91,13 @@ export interface DesignTokens {
   tabsItemSelectedColor: string;
   tabsItemHoverColor: string;
   tabsInkBarColor: string;
+  tabsTitleFontSizeSM: number;
   tabsTitleFontSize: number;
   tabsTitleFontSizeLG: number;
+  tabsHorizontalItemPaddingSM: string;
+  tabsHorizontalItemPadding: string;
+  tabsHorizontalItemPaddingLG: string;
+  tabsHorizontalItemGutter: number;
 }
 
 export const designTokens: DesignTokens = {
@@ -179,6 +184,11 @@ export const designTokens: DesignTokens = {
   tabsItemSelectedColor: '#ffffff',
   tabsItemHoverColor: '#c6c6c6',
   tabsInkBarColor: '#5452f5',
+  tabsTitleFontSizeSM: 13,
   tabsTitleFontSize: 14,
   tabsTitleFontSizeLG: 16,
+  tabsHorizontalItemPaddingSM: '8px 0',
+  tabsHorizontalItemPadding: '12px 0',
+  tabsHorizontalItemPaddingLG: '16px 0',
+  tabsHorizontalItemGutter: 24,
 };

@@ -149,7 +149,7 @@ export default function SettingsPage() {
       <div className="flex-1 flex flex-col min-h-0 bg-neutral-900">
         <Content className="bg-black border border-neutral-800 border-b-0 rounded-t-3xl pt-10 px-10 pb-8">
           <Tabs
-          variant="settings"
+          type="card"
           tabBarGutter={24}
           defaultActiveKey="localization"
           items={SETTINGS_TABS.map((tab) => ({

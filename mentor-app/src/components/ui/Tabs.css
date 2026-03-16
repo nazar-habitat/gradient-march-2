@@ -1,0 +1,75 @@
+/* Card (pill) tab type — overrides Ant's line rendering to produce pill-shaped tabs.
+   Line type is handled entirely by themeConfig tokens; no CSS needed. */
+
+.g-tabs-card.ant-tabs .ant-tabs-nav::before {
+  border-color: transparent;
+}
+
+.g-tabs-card.ant-tabs .ant-tabs-ink-bar {
+  background: transparent;
+}
+
+.g-tabs-card.ant-tabs .ant-tabs-tab {
+  margin: 0;
+  border-radius: var(--ds-border-radius);
+  transition: background 0.2s, color 0.2s;
+}
+
+.g-tabs-card.ant-tabs .ant-tabs-tab + .ant-tabs-tab {
+  margin-inline-start: 8px !important;
+}
+
+.g-tabs-card.ant-tabs .ant-tabs-tab .ant-tabs-tab-btn {
+  color: var(--ds-tabs-item);
+  font-weight: var(--font-weight-medium);
+}
+
+.g-tabs-card.ant-tabs .ant-tabs-tab:hover {
+  background: var(--color-neutral-700);
+}
+
+.g-tabs-card.ant-tabs .ant-tabs-tab:hover .ant-tabs-tab-btn {
+  color: var(--ds-tabs-item-selected);
+}
+
+.g-tabs-card.ant-tabs .ant-tabs-tab-active {
+  background: var(--ds-color-primary);
+}
+
+.g-tabs-card.ant-tabs .ant-tabs-tab-active:hover {
+  background: var(--ds-color-primary);
+}
+
+.g-tabs-card.ant-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: var(--ds-tabs-item-selected);
+}
+
+/* ── Size: small (13px / 16px, px 10px py 8px) ── */
+.g-tabs-card--sm.ant-tabs .ant-tabs-tab {
+  padding: 8px 10px;
+}
+
+.g-tabs-card--sm.ant-tabs .ant-tabs-tab .ant-tabs-tab-btn {
+  font-size: 13px;
+  line-height: 16px;
+}
+
+/* ── Size: medium (14px / 20px, px 12px py 8px) ── */
+.g-tabs-card--md.ant-tabs .ant-tabs-tab {
+  padding: 8px 12px;
+}
+
+.g-tabs-card--md.ant-tabs .ant-tabs-tab .ant-tabs-tab-btn {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* ── Size: large (16px / 24px, px 14px py 10px) ── */
+.g-tabs-card--lg.ant-tabs .ant-tabs-tab {
+  padding: 10px 14px;
+}
+
+.g-tabs-card--lg.ant-tabs .ant-tabs-tab .ant-tabs-tab-btn {
+  font-size: 16px;
+  line-height: 24px;
+}

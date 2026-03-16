@@ -109,8 +109,13 @@ export const themeConfig: ThemeConfig = {
       itemSelectedColor: t.tabsItemSelectedColor,
       itemHoverColor: t.tabsItemHoverColor,
       inkBarColor: t.tabsInkBarColor,
+      titleFontSizeSM: t.tabsTitleFontSizeSM,
       titleFontSize: t.tabsTitleFontSize,
       titleFontSizeLG: t.tabsTitleFontSizeLG,
+      horizontalItemPaddingSM: t.tabsHorizontalItemPaddingSM,
+      horizontalItemPadding: t.tabsHorizontalItemPadding,
+      horizontalItemPaddingLG: t.tabsHorizontalItemPaddingLG,
+      horizontalItemGutter: t.tabsHorizontalItemGutter,
     },
   },
 };
